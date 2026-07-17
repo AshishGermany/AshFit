@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title>AshFit</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+  </head>
+
+  <body>
+    <div id="nav">
+      <button onclick="showTracker()">Tracker</button>
+      <button onclick="showLibrary()">Food Library</button>
+    </div>
+
+    <!-- SCREEN 1: TRACKER -->
+    <div id="trackerScreen">
+      <div class="app-header">
+        <h1>AshFit</h1>
+        <div class="version">v0.2.0 Alpha</div>
+      </div>
+      <div id="stats">
+        <div><b>Calories:</b> <span id="calories">0</span></div>
+        <div><b>Protein:</b> <span id="protein">0</span>g</div>
+      </div>
+      <h3>Favorites</h3>
+      <div id="favoritesBar"></div>
+      <h3>Quick Meals</h3>
+      <button onclick="addFood('work breakfast')">Work Breakfast</button>
+      <button onclick="addFood('daily breakfast')">Daily Breakfast</button>
+
+      <br /><br />
+
+      <input type="text" id="input" placeholder="Type food..." />
+      <div class="suggestions" id="suggestions"></div>
+
+      <button onclick="addFood()">Add</button>
+      <button onclick="undoLast()">Undo Last</button>
+      <button onclick="resetDay()">Reset Day</button>
+
+      <div class="log" id="log"></div>
+    </div>
+
+    <!-- SCREEN 2: FOOD LIBRARY -->
+    <div id="libraryScreen" style="display: none">
+      <h3>Add Food</h3>
+
+      <input id="foodName" placeholder="Food name" />
+      <input id="foodCal" placeholder="Calories" />
+      <input id="foodProtein" placeholder="Protein" />
+      <button onclick="addNewFood()">Add Food</button>
+      <!--<h3>Food Library</h3>-->
+
+      <div id="foodLibrary"></div>
+    </div>
+
+    <!-- SCRIPTS (ALWAYS AT END) -->
+    <script src="data.js"></script>
+    <script src="ui.js"></script>
+    <script src="nutrition.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
