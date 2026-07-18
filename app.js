@@ -1,3 +1,4 @@
+console.log("AshFit v0.2.1 Alpha");
 // =====================
 // ADD FOOD CORE
 // =====================
