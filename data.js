@@ -1,3 +1,4 @@
+let editingFood = null;
 function ensureTodayExists() {
   const today = getDateKey();
 
@@ -6,7 +7,7 @@ function ensureTodayExists() {
       cal: 0,
       protein: 0,
       log: [],
-      freq: {}
+      freq: {},
     };
   }
 
@@ -18,7 +19,7 @@ function ensureTodayExists() {
 // =====================
 
 let foods = JSON.parse(localStorage.getItem("foods")) || {
-  "chicken": {
+  chicken: {
     name: "Chicken (Thigh & Drumstick)",
 
     calories: 165,
@@ -26,32 +27,23 @@ let foods = JSON.parse(localStorage.getItem("foods")) || {
 
     mode: "grams",
 
-    edibleFactor: 0.70,
+    edibleFactor: 0.7,
 
-    favourite: true
-},
+    favourite: true,
+  },
 
+  cappuccino: { cal: 120, protein: 5 },
+  "peanutbutter sandwich": { cal: 255, protein: 9 },
 
-  "cappuccino": { cal: 120, protein: 5 },
-  "peanutbutter sandwich": { cal: 255, protein: 9},
-  
-  
-  
-  
-  
-  "egg": {
+  egg: {
     name: "Egg",
     calories: 72,
     protein: 6.3,
 
     mode: "unit",
 
-    favourite: true
-},
-
-
-
-
+    favourite: true,
+  },
 
   "work coffee": { cal: 75, protein: 2.5 },
   "snickers mini": { cal: 43, protein: 0.5 },
@@ -64,10 +56,10 @@ let foods = JSON.parse(localStorage.getItem("foods")) || {
 
     mode: "grams",
 
-    favourite: true
-},
+    favourite: true,
+  },
 
-  "speisequark": {
+  speisequark: {
     name: "Speisequark",
 
     calories: 67,
@@ -75,12 +67,12 @@ let foods = JSON.parse(localStorage.getItem("foods")) || {
 
     mode: "grams",
 
-    favourite: true
-},
+    favourite: true,
+  },
 
   "heinz ketchup": { cal: 20, protein: 0.2 },
   "butter schmalz": { cal: 18, protein: 0 },
-  "san pellegrino": {cal: 117, protein: 0},
+  "san pellegrino": { cal: 117, protein: 0 },
   "work breakfast": {
     name: "Work Breakfast",
 
@@ -89,10 +81,10 @@ let foods = JSON.parse(localStorage.getItem("foods")) || {
 
     mode: "unit",
 
-    favourite: true
-},
+    favourite: true,
+  },
 
-  "daily breakfast": { cal: 380, protein: 8}
+  "daily breakfast": { cal: 380, protein: 8 },
 };
 
 // =====================
@@ -106,9 +98,6 @@ let favoriteFoods = [
   "speisequark",
   //"chicken"
 ];
-
-
-
 
 // =====================
 // SAVE / UI
@@ -134,8 +123,7 @@ function getDateKey() {
   return new Date().toISOString().split("T")[0];
 }
 
-let data =
-  JSON.parse(localStorage.getItem("data")) || {};
+let data = JSON.parse(localStorage.getItem("data")) || {};
 
 function ensureTodayExists() {
   const today = getDateKey();
@@ -145,7 +133,7 @@ function ensureTodayExists() {
       cal: 0,
       protein: 0,
       log: [],
-      freq: {}
+      freq: {},
     };
   }
 
@@ -159,20 +147,25 @@ let today = ensureTodayExists();
 // =====================
 
 function addNewFood() {
-
   const name = document.getElementById("foodName").value.toLowerCase().trim();
   const cal = parseFloat(document.getElementById("foodCal").value);
   const protein = parseFloat(document.getElementById("foodProtein").value);
 
   if (!name || isNaN(cal) || isNaN(protein)) return;
 
+  if (editingFood) {
+    delete foods[editingFood];
+  }
+
   foods[name] = {
     name: name,
     calories: cal,
     protein: protein,
     mode: "unit",
-    favourite: false
-};
+    favourite: false,
+  };
+
+  editingFood = null;
 
   saveFoods();
   renderFoodLibrary();
@@ -188,17 +181,30 @@ function addNewFood() {
 // =====================
 
 function deleteFood(name) {
-
   delete foods[name];
 
   saveFoods();
   renderFoodLibrary();
 }
 
+// =====================
+// EDIT FOOD FUNC
+// =====================
+
+function editFood(name) {
+  editingFood = name;
+  const food = foods[name];
+
+  document.getElementById("foodName").value = name;
+
+  document.getElementById("foodCal").value = getCalories(food);
+
+  document.getElementById("foodProtein").value = getProtein(food);
+}
+
 // ================================
 // FUNCTION UNDO LAST AND RESET DAY
 // ================================
-
 
 function undoLast() {
   if (data[today].log.length === 0) return;

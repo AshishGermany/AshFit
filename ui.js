@@ -97,6 +97,8 @@ function renderFoodLibrary() {
       <b>${name}</b><br>
       ${getCalories(val)} kcal • ${getProtein(val)}g protein
       <br>
+      <button onclick="editFood('${name}')">Edit</button>
+
       <button onclick="deleteFood('${name}')">Delete</button>
     `;
 
