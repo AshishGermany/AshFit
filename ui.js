@@ -216,3 +216,9 @@ function refreshUI() {
     renderFrequentFoods();
 
 }
+
+// =====================
+// INITIAL LOAD
+// =====================
+
+refreshUI();
