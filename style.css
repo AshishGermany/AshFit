@@ -102,3 +102,42 @@ h1, h2, h3 {
     font-size:0.85rem;
     color:#666;
 }
+
+/* ==========================
+   FAVORITES BAR
+========================== */
+
+#favoritesBar {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 8px 0;
+    margin-bottom: 20px;
+}
+
+#favoritesBar button {
+    flex: 0 0 auto;
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 10px 16px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+#frequentBar {
+
+    display: flex;
+
+    gap: 10px;
+
+    overflow-x: auto;
+
+    padding: 8px 0;
+
+    margin-bottom: 20px;
+}

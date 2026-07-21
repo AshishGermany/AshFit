@@ -53,7 +53,7 @@ function addFood(rawInput) {
 
     if (!foods[matchedFood]) return;
 
-    const f = foods[matchedFood];
+    //const f = foods[matchedFood];
     //==
     //addToDay(
     //`${quantity}g ${matchedFood}`,
@@ -61,10 +61,19 @@ function addFood(rawInput) {
     //(f.protein * quantity) / 100
     //);
     //==
+    //addToDay(
+    //  `${quantity}g ${matchedFood}`,
+    //  (getCalories(f) * quantity) / 100,
+    //  (getProtein(f) * quantity) / 100,
+    //);
+    const f = foods[matchedFood];
+    const edible = f.edibleFactor ?? 1;
+    const edibleWeight = quantity * edible;
+
     addToDay(
       `${quantity}g ${matchedFood}`,
-      (getCalories(f) * quantity) / 100,
-      (getProtein(f) * quantity) / 100,
+      (getCalories(f) * edibleWeight) / 100,
+      (getProtein(f) * edibleWeight) / 100,
     );
 
     finish();
@@ -110,7 +119,6 @@ function addFood(rawInput) {
   //addToDay(input, f.cal, f.protein);
   addToDay(input, getCalories(f), getProtein(f));
 
-  
   finish();
 }
 
@@ -119,20 +127,18 @@ function addFood(rawInput) {
 // =====================
 
 function finish() {
-  document.getElementById("input").value = "";
-  document.getElementById("suggestions").innerHTML = "";
 
-  save();
-  updateUI();
+    document.getElementById("input").value = "";
+
+    document.getElementById("suggestions").innerHTML = "";
+
+    save();
+
+    refreshUI();
+
+    document.getElementById("input").focus();
+
 }
-
-// =====================
-// INIT
-// =====================
-
-renderFoodLibrary();
-renderFavorites();
-updateUI();
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("service-worker.js");

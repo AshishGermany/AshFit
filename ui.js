@@ -117,17 +117,102 @@ function showLibrary() {
 }
 
 function renderFavorites() {
-  const container = document.getElementById("favoritesBar");
 
-  container.innerHTML = "";
+    const container =
+        document.getElementById("favoritesBar");
 
-  favoriteFoods.forEach(food => {
-    const button = document.createElement("button");
+    container.innerHTML = "";
 
-    button.textContent = food;
+    Object.values(foods)
 
-    button.onclick = () => addFood(food);
+        .filter(food => food.favourite)
 
-    container.appendChild(button);
-  });
+        .forEach(food => {
+
+            const button =
+                document.createElement("button");
+
+            button.textContent = food.name;
+
+            button.onclick = () =>
+                addFood(food.name);
+
+            container.appendChild(button);
+
+        });
+
+}
+
+function renderFrequentFoods() {
+
+    const container =
+        document.getElementById("frequentBar");
+
+    container.innerHTML = "";
+
+    const freq =
+        data[today].freq || {};
+
+    Object.entries(freq)
+
+    .sort((a,b) => b[1] - a[1])
+
+    .slice(0,5)
+
+    .forEach(([name,count]) => {
+
+        const button =
+            document.createElement("button");
+
+        button.textContent = name;
+
+        button.onclick = () =>
+            addFood(name);
+
+        container.appendChild(button);
+
+    });
+
+}
+
+// =====================
+// MODE SELECTOR
+// =====================
+
+
+const modeSelect =
+document.getElementById("foodMode");
+
+modeSelect.addEventListener("change", function () {
+
+    const edible =
+        document.getElementById("foodEdible");
+
+    const label =
+        document.getElementById("edibleLabel");
+
+    if (this.value === "grams") {
+
+        edible.style.display = "block";
+        label.style.display = "block";
+
+    } else {
+
+        edible.style.display = "none";
+        label.style.display = "none";
+
+    }
+
+});
+
+function refreshUI() {
+
+    updateUI();
+
+    renderFoodLibrary();
+
+    renderFavorites();
+
+    renderFrequentFoods();
+
 }

@@ -19,7 +19,7 @@
     <div id="trackerScreen">
       <div class="app-header">
         <h1>AshFit</h1>
-        <div class="version">v0.2.0 Alpha</div>
+        <div class="version">v0.3.0 Alpha</div>
       </div>
       <div id="stats">
         <div><b>Calories:</b> <span id="calories">0</span></div>
@@ -27,6 +27,8 @@
       </div>
       <h3>Favorites</h3>
       <div id="favoritesBar"></div>
+      <h3>🔥 Frequently Used</h3>
+      <div id="frequentBar"></div>
       <h3>Quick Meals</h3>
       <button onclick="addFood('work breakfast')">Work Breakfast</button>
       <button onclick="addFood('daily breakfast')">Daily Breakfast</button>
@@ -48,9 +50,39 @@
       <h3>Add Food</h3>
 
       <input id="foodName" placeholder="Food name" />
+
       <input id="foodCal" placeholder="Calories" />
+
       <input id="foodProtein" placeholder="Protein" />
+      <br />
+      <label for="foodMode">Mode</label>
+
+      <select id="foodMode">
+        <option value="unit">Per Unit</option>
+        <option value="grams">Per 100 g</option>
+      </select>
+
+      <label id="edibleLabel" for="foodEdible" style="display: none">
+        Edible Portion %
+      </label>
+
+      <input
+        id="foodEdible"
+        type="number"
+        value="100"
+        min="1"
+        max="100"
+        style="display: none"
+      />
+
+      <br />
+      <label>
+        Favourite
+        <input type="checkbox" id="foodFavourite" />
+      </label>
+
       <button onclick="addNewFood()">Add Food</button>
+
       <!--<h3>Food Library</h3>-->
 
       <div id="foodLibrary"></div>

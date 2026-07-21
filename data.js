@@ -157,19 +157,28 @@ function addNewFood() {
     delete foods[editingFood];
   }
 
+  const mode = document.getElementById("foodMode").value;
+
+  const edible = parseFloat(document.getElementById("foodEdible").value);
+
   foods[name] = {
-    name: name,
+    name,
+
     calories: cal,
-    protein: protein,
-    mode: "unit",
-    favourite: false,
+
+    protein,
+
+    mode,
+
+    edibleFactor: mode === "grams" ? edible / 100 : 1,
+
+    favourite: document.getElementById("foodFavourite").checked,
   };
 
   editingFood = null;
+  document.getElementById("foodFavourite").checked = false;
 
-  saveFoods();
-  renderFoodLibrary();
-  updateUI();
+  refreshUI();
 
   document.getElementById("foodName").value = "";
   document.getElementById("foodCal").value = "";
@@ -185,6 +194,7 @@ function deleteFood(name) {
 
   saveFoods();
   renderFoodLibrary();
+  renderFrequentFoods();
 }
 
 // =====================
@@ -200,6 +210,15 @@ function editFood(name) {
   document.getElementById("foodCal").value = getCalories(food);
 
   document.getElementById("foodProtein").value = getProtein(food);
+
+  document.getElementById("foodMode").value = food.mode || "unit";
+
+  document.getElementById("foodFavourite").checked = food.favourite || false;
+
+  if (food.mode === "grams") {
+    document.getElementById("foodEdible").value =
+      (food.edibleFactor || 1) * 100;
+  }
 }
 
 // ================================
@@ -215,7 +234,7 @@ function undoLast() {
   data[today].protein -= last.protein;
 
   save();
-  updateUI();
+  refreshUI();
 }
 
 function resetDay() {
@@ -226,5 +245,5 @@ function resetDay() {
   data[today].log = [];
 
   save();
-  updateUI();
+  refreshUI();
 }
