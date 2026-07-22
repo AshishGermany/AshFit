@@ -1,10 +1,49 @@
+/* ==========================
+   ASHFIT DESIGN SYSTEM
+========================== */
+
+:root {
+
+    --bg: #0f1115;
+
+    --card: #1a1f29;
+
+    --card-hover: #242b38;
+
+    --accent: #38BDF8;
+
+    --text: #f5f7fa;
+
+    --text-secondary: #b8c0cc;
+
+    --border: #2b3444;
+
+    --shadow:
+        0 8px 24px rgba(0,0,0,.35);
+
+    --radius: 18px;
+
+}
+
 body {
-  font-family: Arial, sans-serif;
-  max-width: 500px;
-  margin: auto;
-  padding: 16px;
-  background: #111;
-  color: white;
+
+    font-family:
+        Inter,
+        Arial,
+        sans-serif;
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    max-width: 500px;
+
+    margin: auto;
+
+    padding: 18px;
+
+    line-height: 1.5;
+
 }
 
 h2, h3 {
@@ -12,10 +51,19 @@ h2, h3 {
 }
 
 #stats {
-  background: #1e1e1e;
-  padding: 16px;
-  border-radius: 14px;
-  margin-bottom: 15px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 20px;
+
+    margin-bottom: 24px;
+
+    box-shadow: var(--shadow);
+
 }
 
 #input {
@@ -29,12 +77,42 @@ h2, h3 {
 }
 
 button {
-  padding: 12px 16px;
-  border: none;
-  border-radius: 10px;
-  margin: 4px;
-  font-size: 15px;
-  cursor: pointer;
+
+    background: var(--card);
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    padding: 14px 18px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background .2s,
+        transform .15s,
+        border-color .2s;
+
+}
+
+button:hover {
+
+    background: var(--card-hover);
+
+    border-color: var(--accent);
+
+}
+
+button:active {
+
+    transform: scale(.97);
+
 }
 
 .suggestions {
@@ -63,11 +141,27 @@ body {
   padding: 12px;
 }
 
-input {
-  font-size: 18px;
-  padding: 12px;
-  width: 80%;
-  margin-bottom: 10px;
+input,
+select {
+
+    background: var(--card);
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    padding: 14px;
+
+    font-size: 16px;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    margin-bottom: 12px;
+
 }
 
 button {
@@ -84,9 +178,19 @@ h1, h2, h3 {
 }
 
 .item {
-  font-size: 18px;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    padding: 16px;
+
+    margin-bottom: 14px;
+
+    box-shadow: var(--shadow);
+
 }
 
 #libraryScreen {
@@ -140,4 +244,8 @@ h1, h2, h3 {
     padding: 8px 0;
 
     margin-bottom: 20px;
+}
+
+.log {
+    margin-top: 20px;
 }
