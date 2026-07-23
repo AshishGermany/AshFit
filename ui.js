@@ -94,7 +94,7 @@ function renderFoodLibrary() {
     div.className = "item";
 
     div.innerHTML = `
-      <b>${name}</b><br>
+      <b>${val.name || name}</b><br>
       ${getCalories(val)} kcal • ${getProtein(val)}g protein
       <br>
       <button onclick="editFood('${name}')">Edit</button>

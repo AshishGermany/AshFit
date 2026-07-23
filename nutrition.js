@@ -13,3 +13,15 @@ function getMode(food) {
 function getEdibleFactor(food) {
     return food.edibleFactor ?? 1;
 }
+
+function findFoodKey(input){
+
+    input = input.toLowerCase().trim();
+
+    return Object.keys(foods)
+    .find(key =>
+        key.toLowerCase() === input ||
+        foods[key].name.toLowerCase() === input
+    );
+
+}

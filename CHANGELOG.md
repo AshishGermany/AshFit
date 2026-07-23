@@ -76,3 +76,119 @@ This release marks the beginning of AshFit's visual redesign. The focus shifted 
 - Introduce Quick Add card.
 - Improve Daily Log presentation.
 - Continue mobile-first UI refinements.
+
+# AshFit v0.3.3 Alpha
+Codename: Interactive Dashboard
+
+Release Date: 23 July 2026
+
+## Overview
+
+This release continues AshFit's transition from a functional calorie tracker into a polished mobile-first application. The focus was on improving interaction, visual hierarchy, and touch experience without changing the underlying nutrition functionality.
+
+## Added
+
+- Redesigned Favorites section using modern chip-style buttons.
+- Redesigned Frequently Used section using horizontally scrollable action chips.
+- Added smooth hover and press animations for quick actions.
+- Improved section spacing and typography throughout the tracker dashboard.
+
+## Improved
+
+- Quick actions now feel like native mobile app controls rather than traditional HTML buttons.
+- Better use of whitespace and visual grouping.
+- Horizontal scrolling for Favorites and Frequently Used provides a cleaner mobile experience.
+- Overall dashboard feels significantly more polished and touch-friendly.
+
+## Technical
+
+- Introduced reusable Action Chip styling.
+- Improved CSS organization for dashboard components.
+- No JavaScript changes required.
+- Existing functionality remains fully compatible.
+
+## UI Progress
+
+Completed:
+✓ Design System
+✓ Premium Dark Theme
+✓ Dashboard Statistic Cards
+✓ Interactive Favorite Chips
+✓ Interactive Frequently Used Chips
+
+Remaining:
+□ Quick Add redesign
+□ Daily Log redesign
+□ Glassmorphism effects
+□ Icons
+□ Micro animations
+□ Mobile polish
+
+## Next Version (v0.3.4 Alpha)
+
+- Redesign the Daily Log.
+- Introduce richer food cards.
+- Improve spacing and visual hierarchy.
+- Continue premium mobile UI refinements.
+
+# AshFit v0.3.4 Alpha
+Codename: Nutrition Core
+
+Release Date: 23 July 2026
+
+## Overview
+
+This release marks a major transition for AshFit from a simple calorie tracker into a personalized nutrition application.
+
+The focus of this update was building the foundation for a complete personal food database based on actual foods, meals, and drinks used in daily life.
+
+---
+
+## Added
+
+### Personal Nutrition Database v1.0
+
+Added a dedicated food database containing frequently used foods:
+
+- Protein sources
+- Dairy products
+- Eggs
+- Bakery items
+- Snacks
+- Drinks
+- Condiments
+- Ready meals
+- Fruits and vegetables
+
+The database now includes:
+
+- Calories
+- Protein
+- Food mode (unit / grams)
+- Edible portion factors
+- Categories
+- Favourite status
+- Food icons
+
+---
+
+## Improved
+
+### Database Structure
+
+Separated the food database from application state.
+
+New structure:
+
+- `foods.js` → Nutrition database
+- `data.js` → User data and tracking state
+
+This improves maintainability and allows future expansion.
+
+---
+
+### Food Naming System
+
+Improved separation between:
+
+Internal database keys:

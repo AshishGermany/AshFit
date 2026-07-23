@@ -18,74 +18,10 @@ function ensureTodayExists() {
 // DATA
 // =====================
 
-let foods = JSON.parse(localStorage.getItem("foods")) || {
-  chicken: {
-    name: "Chicken (Thigh & Drumstick)",
-
-    calories: 165,
-    protein: 31,
-
-    mode: "grams",
-
-    edibleFactor: 0.7,
-
-    favourite: true,
-  },
-
-  cappuccino: { cal: 120, protein: 5 },
-  "peanutbutter sandwich": { cal: 255, protein: 9 },
-
-  egg: {
-    name: "Egg",
-    calories: 72,
-    protein: 6.3,
-
-    mode: "unit",
-
-    favourite: true,
-  },
-
-  "work coffee": { cal: 75, protein: 2.5 },
-  "snickers mini": { cal: 43, protein: 0.5 },
-  "schoko-keks-riegel": { cal: 132, protein: 2 },
-  "pork steak": {
-    name: "Pork Steak",
-
-    calories: 220,
-    protein: 26,
-
-    mode: "grams",
-
-    favourite: true,
-  },
-
-  speisequark: {
-    name: "Speisequark",
-
-    calories: 67,
-    protein: 12,
-
-    mode: "grams",
-
-    favourite: true,
-  },
-
-  "heinz ketchup": { cal: 20, protein: 0.2 },
-  "butter schmalz": { cal: 18, protein: 0 },
-  "san pellegrino": { cal: 117, protein: 0 },
-  "work breakfast": {
-    name: "Work Breakfast",
-
-    calories: 445,
-    protein: 29,
-
-    mode: "unit",
-
-    favourite: true,
-  },
-
-  "daily breakfast": { cal: 380, protein: 8 },
-};
+let foods =
+JSON.parse(localStorage.getItem("foods"))
+||
+structuredClone(defaultFoods);
 
 // =====================
 // FAV FOODS DATA

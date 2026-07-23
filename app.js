@@ -1,4 +1,4 @@
-console.log("AshFit v0.3.3 Alpha");
+console.log("AshFit v0.3.4 Alpha");
 // =====================
 // ADD FOOD CORE
 // =====================
@@ -51,22 +51,14 @@ function addFood(rawInput) {
     quantity = +grams[1];
     matchedFood = grams[2];
 
-    if (!foods[matchedFood]) return;
+    let foodKey = findFoodKey(matchedFood);
 
-    //const f = foods[matchedFood];
-    //==
-    //addToDay(
-    //`${quantity}g ${matchedFood}`,
-    //(f.cal * quantity) / 100,
-    //(f.protein * quantity) / 100
-    //);
-    //==
-    //addToDay(
-    //  `${quantity}g ${matchedFood}`,
-    //  (getCalories(f) * quantity) / 100,
-    //  (getProtein(f) * quantity) / 100,
-    //);
+    if (!foodKey) return;
+
+    matchedFood = foodKey;
+
     const f = foods[matchedFood];
+
     const edible = f.edibleFactor ?? 1;
     const edibleWeight = quantity * edible;
 
@@ -91,15 +83,14 @@ function addFood(rawInput) {
       matchedFood = matchedFood.slice(0, -1);
     }
 
-    if (!foods[matchedFood]) return;
+    let foodKey = findFoodKey(matchedFood);
+
+    if (!foodKey) return;
+
+    matchedFood = foodKey;
 
     const f = foods[matchedFood];
 
-    //addToDay(
-    //  `${quantity} ${matchedFood}`,
-    //  f.cal * quantity,
-    //  f.protein * quantity
-    //);
     addToDay(
       `${quantity} ${matchedFood}`,
       getCalories(f) * quantity,
@@ -112,7 +103,11 @@ function addFood(rawInput) {
   // direct match
   if (input === "ketchup") input = "heinz ketchup";
 
-  if (!foods[input]) return;
+  let foodKey = findFoodKey(input);
+
+  if (!foodKey) return;
+
+  input = foodKey;
 
   const f = foods[input];
 
@@ -127,17 +122,15 @@ function addFood(rawInput) {
 // =====================
 
 function finish() {
+  document.getElementById("input").value = "";
 
-    document.getElementById("input").value = "";
+  document.getElementById("suggestions").innerHTML = "";
 
-    document.getElementById("suggestions").innerHTML = "";
+  save();
 
-    save();
+  refreshUI();
 
-    refreshUI();
-
-    document.getElementById("input").focus();
-
+  document.getElementById("input").focus();
 }
 
 if ("serviceWorker" in navigator) {
