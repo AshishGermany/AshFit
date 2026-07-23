@@ -249,3 +249,57 @@ h1, h2, h3 {
 .log {
     margin-top: 20px;
 }
+
+/* ==========================
+   DASHBOARD
+========================== */
+
+#stats{
+
+    display:flex;
+
+    gap:16px;
+
+}
+
+.statCard{
+
+    flex:1;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    text-align:center;
+
+}
+
+.statLabel{
+
+    color:var(--text-secondary);
+
+    font-size:.9rem;
+
+}
+
+.statValue{
+
+    font-size:2.3rem;
+
+    font-weight:700;
+
+    margin:8px 0;
+
+}
+
+.statUnit{
+
+    color:var(--accent);
+
+    font-weight:600;
+
+}
