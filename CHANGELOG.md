@@ -192,3 +192,98 @@ This improves maintainability and allows future expansion.
 Improved separation between:
 
 Internal database keys:
+porkSteak
+highProteinShake
+chickenSlices
+
+and user-facing names:
+Pork Steak
+Dr. Oetker High Protein Shake
+Chicken Breast Slices
+
+
+The app now supports cleaner display names.
+
+---
+
+### Food Matching
+
+Added a food lookup system allowing AshFit to understand both:
+porkSteak
+
+and:
+
+Pork Steak
+
+
+This improves compatibility between:
+
+- Food Library
+- Favorites
+- Search
+- Manual input
+
+---
+
+## Database Improvements
+
+Updated values based on personal nutrition tracking history:
+
+Examples:
+
+Chicken (bone-in):
+- Logged weight supported
+- Edible portion factor implemented
+
+Speisequark:
+- Normalized per 100g
+
+Work Coffee:
+- Updated to current recipe estimate
+
+---
+
+## Technical Changes
+
+Added:
+
+- `foods.js`
+- Food lookup helper
+- Expanded nutrition metadata
+
+Updated:
+
+- `data.js`
+- `app.js`
+- `ui.js`
+- `service-worker.js`
+
+---
+
+## Current Progress
+
+Completed:
+
+✓ Premium UI foundation  
+✓ Food Library system  
+✓ Food editing  
+✓ Gram-based foods  
+✓ Edible portion calculation  
+✓ Favourite foods  
+✓ Frequently used foods  
+✓ Personal Nutrition Database v1.0  
+
+---
+
+## Next Goals
+
+### AshFit v0.3.5 Alpha
+
+Planned:
+
+- Complete remaining food imports
+- Improve Food Library browsing
+- Add category filtering
+- Add food icons to UI
+- Redesign Daily Log cards
+- Improve mobile experience
