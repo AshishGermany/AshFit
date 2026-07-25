@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="style.css" />
     <link rel="manifest" href="manifest.json" />
+    <script src="https://unpkg.com/lucide@latest"></script>
   </head>
 
   <body>
@@ -21,41 +22,27 @@
         <h1>AshFit</h1>
         <div class="version">v0.3.5 Alpha</div>
       </div>
-<div id="stats">
+      <div id="stats">
+        <div class="statCard">
+          <div class="statLabel">Calories</div>
 
-    <div class="statCard">
-
-        <div class="statLabel">
-            Calories
-        </div>
-
-        <div class="statValue">
+          <div class="statValue">
             <span id="calories">0</span>
+          </div>
+
+          <div class="statUnit">kcal</div>
         </div>
 
-        <div class="statUnit">
-            kcal
-        </div>
+        <div class="statCard">
+          <div class="statLabel">Protein</div>
 
-    </div>
-
-    <div class="statCard">
-
-        <div class="statLabel">
-            Protein
-        </div>
-
-        <div class="statValue">
+          <div class="statValue">
             <span id="protein">0</span>
+          </div>
+
+          <div class="statUnit">g</div>
         </div>
-
-        <div class="statUnit">
-            g
-        </div>
-
-    </div>
-
-</div>
+      </div>
       <h3>Favorites</h3>
       <div id="favoritesBar"></div>
       <h3>🔥 Frequently Used</h3>
@@ -79,12 +66,50 @@
     <!-- SCREEN 2: FOOD LIBRARY -->
     <div id="libraryScreen" style="display: none">
       <h3>Add Food</h3>
+      <input id="foodSearch" placeholder="Search food..." />
+      <div id="foodFilters">
+        <button onclick="filterFoods('All')">All</button>
 
+        <button onclick="filterFoods('Protein')">Protein</button>
+
+        <button onclick="filterFoods('Dairy')">Dairy</button>
+
+        <button onclick="filterFoods('Drinks')">Drinks</button>
+
+        <button onclick="filterFoods('Snacks')">Snacks</button>
+      </div>
+      <br />
       <input id="foodName" placeholder="Food name" />
 
       <input id="foodCal" placeholder="Calories" />
 
       <input id="foodProtein" placeholder="Protein" />
+
+      <br />
+
+      <label for="foodType"> Type </label>
+
+      <select id="foodType">
+        <option value="food">Food</option>
+
+        <option value="drink">Drink</option>
+      </select>
+
+      <label for="foodCategory"> Category </label>
+
+      <select id="foodCategory">
+        <option value="Protein">Protein</option>
+        <option value="Dairy">Dairy</option>
+        <option value="Drinks">Drinks</option>
+        <option value="Bakery">Bakery</option>
+        <option value="Snacks">Snacks</option>
+        <option value="Fruit">Fruit</option>
+        <option value="Vegetables">Vegetables</option>
+        <option value="Ready Meals">Ready Meals</option>
+        <option value="Condiments">Condiments</option>
+        <option value="Other">Other</option>
+      </select>
+
       <br />
       <label for="foodMode">Mode</label>
 

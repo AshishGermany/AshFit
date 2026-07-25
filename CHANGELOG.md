@@ -400,3 +400,12 @@ Current priorities:
 2. Improve usability for daily tracking.
 3. Continue refining the premium mobile experience.
 4. Expand into fitness, wellness, and health analytics.
+
+v0.4.0-alpha
+
+Food Library foundation:
+- standardized food schema
+- added food/drink types
+- added categories
+- redesigned food cards
+- improved add food workflow

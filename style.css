@@ -3,75 +3,64 @@
 ========================== */
 
 :root {
+  --bg: #0f1115;
 
-    --bg: #0f1115;
+  --card: #1a1f29;
 
-    --card: #1a1f29;
+  --card-hover: #242b38;
 
-    --card-hover: #242b38;
+  --accent: #38bdf8;
 
-    --accent: #38BDF8;
+  --text: #f5f7fa;
 
-    --text: #f5f7fa;
+  --text-secondary: #b8c0cc;
 
-    --text-secondary: #b8c0cc;
+  --border: #2b3444;
 
-    --border: #2b3444;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 
-    --shadow:
-        0 8px 24px rgba(0,0,0,.35);
-
-    --radius: 18px;
-
+  --radius: 18px;
 }
 
 body {
+  font-family: Inter, Arial, sans-serif;
 
-    font-family:
-        Inter,
-        Arial,
-        sans-serif;
+  background: var(--bg);
 
-    background: var(--bg);
+  color: var(--text);
 
-    color: var(--text);
+  max-width: 500px;
 
-    max-width: 500px;
+  margin: auto;
 
-    margin: auto;
+  padding: 18px;
 
-    padding: 18px;
-
-    line-height: 1.5;
-
+  line-height: 1.5;
 }
 
-h2, h3{
+h2,
+h3 {
+  margin-top: 28px;
 
-    margin-top:28px;
+  margin-bottom: 14px;
 
-    margin-bottom:14px;
+  font-weight: 700;
 
-    font-weight:700;
-
-    letter-spacing:.3px;
-
+  letter-spacing: 0.3px;
 }
 
 #stats {
+  background: var(--card);
 
-    background: var(--card);
+  border: 1px solid var(--border);
 
-    border: 1px solid var(--border);
+  border-radius: var(--radius);
 
-    border-radius: var(--radius);
+  padding: 20px;
 
-    padding: 20px;
+  margin-bottom: 24px;
 
-    margin-bottom: 24px;
-
-    box-shadow: var(--shadow);
-
+  box-shadow: var(--shadow);
 }
 
 #input {
@@ -85,42 +74,36 @@ h2, h3{
 }
 
 button {
+  background: var(--card);
 
-    background: var(--card);
+  color: var(--text);
 
-    color: var(--text);
+  border: 1px solid var(--border);
 
-    border: 1px solid var(--border);
+  border-radius: 14px;
 
-    border-radius: 14px;
+  padding: 14px 18px;
 
-    padding: 14px 18px;
+  font-size: 16px;
 
-    font-size: 16px;
+  font-weight: 600;
 
-    font-weight: 600;
+  cursor: pointer;
 
-    cursor: pointer;
-
-    transition:
-        background .2s,
-        transform .15s,
-        border-color .2s;
-
+  transition:
+    background 0.2s,
+    transform 0.15s,
+    border-color 0.2s;
 }
 
 button:hover {
+  background: var(--card-hover);
 
-    background: var(--card-hover);
-
-    border-color: var(--accent);
-
+  border-color: var(--accent);
 }
 
 button:active {
-
-    transform: scale(.97);
-
+  transform: scale(0.97);
 }
 
 .suggestions {
@@ -142,6 +125,48 @@ button:active {
   margin-bottom: 8px;
 }
 
+.food-card {
+  background: #1a1a1a;
+
+  padding: 14px;
+
+  border-radius: 14px;
+
+  margin-bottom: 12px;
+}
+
+.food-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 20px;
+}
+
+.food-header svg {
+  width: 24px;
+
+  height: 24px;
+}
+
+.food-category {
+  margin-top: 8px;
+
+  font-size: 14px;
+
+  opacity: 0.7;
+}
+
+.food-info {
+  margin-top: 8px;
+}
+
+.food-actions {
+  margin-top: 10px;
+}
+
 /* ===== MOBILE-FIRST SCALING ===== */
 
 body {
@@ -151,25 +176,23 @@ body {
 
 input,
 select {
+  background: var(--card);
 
-    background: var(--card);
+  color: var(--text);
 
-    color: var(--text);
+  border: 1px solid var(--border);
 
-    border: 1px solid var(--border);
+  border-radius: 14px;
 
-    border-radius: 14px;
+  padding: 14px;
 
-    padding: 14px;
+  font-size: 16px;
 
-    font-size: 16px;
+  width: 100%;
 
-    width: 100%;
+  box-sizing: border-box;
 
-    box-sizing: border-box;
-
-    margin-bottom: 12px;
-
+  margin-bottom: 12px;
 }
 
 button {
@@ -181,38 +204,38 @@ button {
   width: 50%;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-size: 22px;
 }
 
 .item {
+  background: var(--card);
 
-    background: var(--card);
+  border: 1px solid var(--border);
 
-    border: 1px solid var(--border);
+  border-radius: 16px;
 
-    border-radius: 16px;
+  padding: 16px;
 
-    padding: 16px;
+  margin-bottom: 14px;
 
-    margin-bottom: 14px;
-
-    box-shadow: var(--shadow);
-
+  box-shadow: var(--shadow);
 }
 
 #libraryScreen {
   display: none;
 }
 
-.app-header{
-    text-align:center;
-    margin-bottom:20px;
+.app-header {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.version{
-    font-size:0.85rem;
-    color:#666;
+.version {
+  font-size: 0.85rem;
+  color: #666;
 }
 
 /* ==========================
@@ -220,111 +243,97 @@ h1, h2, h3 {
 ========================== */
 
 #favoritesBar {
+  display: flex;
 
-    display: flex;
+  gap: 12px;
 
-    gap: 12px;
+  overflow-x: auto;
 
-    overflow-x: auto;
+  padding: 10px 0 18px;
 
-    padding: 10px 0 18px;
-
-    scrollbar-width: none;
-
+  scrollbar-width: none;
 }
 
-#favoritesBar::-webkit-scrollbar{
-    display:none;
+#favoritesBar::-webkit-scrollbar {
+  display: none;
 }
 
 #favoritesBar button {
-    flex: 0 0 auto;
+  flex: 0 0 auto;
 
-    border: none;
+  border: none;
 
-    border-radius: 12px;
+  border-radius: 12px;
 
-    padding: 10px 16px;
+  padding: 10px 16px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    font-weight: bold;
+  font-weight: bold;
 }
 
 #frequentBar {
+  display: flex;
 
-    display:flex;
+  gap: 12px;
 
-    gap:12px;
+  overflow-x: auto;
 
-    overflow-x:auto;
+  padding: 10px 0 20px;
 
-    padding:10px 0 20px;
-
-    scrollbar-width:none;
-
+  scrollbar-width: none;
 }
 
-#frequentBar::-webkit-scrollbar{
-    display:none;
+#frequentBar::-webkit-scrollbar {
+  display: none;
 }
 
 .log {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 /* ==========================
    DASHBOARD
 ========================== */
 
-#stats{
+#stats {
+  display: flex;
 
-    display:flex;
-
-    gap:16px;
-
+  gap: 16px;
 }
 
-.statCard{
+.statCard {
+  flex: 1;
 
-    flex:1;
+  background: var(--card);
 
-    background:var(--card);
+  border: 1px solid var(--border);
 
-    border:1px solid var(--border);
+  border-radius: 20px;
 
-    border-radius:20px;
+  padding: 20px;
 
-    padding:20px;
-
-    text-align:center;
-
+  text-align: center;
 }
 
-.statLabel{
+.statLabel {
+  color: var(--text-secondary);
 
-    color:var(--text-secondary);
-
-    font-size:.9rem;
-
+  font-size: 0.9rem;
 }
 
-.statValue{
+.statValue {
+  font-size: 2.3rem;
 
-    font-size:2.3rem;
+  font-weight: 700;
 
-    font-weight:700;
-
-    margin:8px 0;
-
+  margin: 8px 0;
 }
 
-.statUnit{
+.statUnit {
+  color: var(--accent);
 
-    color:var(--accent);
-
-    font-weight:600;
-
+  font-weight: 600;
 }
 
 /* ==========================
@@ -332,42 +341,36 @@ h1, h2, h3 {
 ========================== */
 
 #favoritesBar button,
-#frequentBar button{
+#frequentBar button {
+  width: auto;
 
-    width:auto;
+  white-space: nowrap;
 
-    white-space:nowrap;
+  padding: 12px 18px;
 
-    padding:12px 18px;
+  border-radius: 999px;
 
-    border-radius:999px;
+  background: var(--card);
 
-    background:var(--card);
+  border: 1px solid var(--border);
 
-    border:1px solid var(--border);
+  color: var(--text);
 
-    color:var(--text);
+  font-weight: 600;
 
-    font-weight:600;
+  transition: all 0.2s ease;
 
-    transition:all .2s ease;
-
-    box-shadow:var(--shadow);
-
+  box-shadow: var(--shadow);
 }
 
 #favoritesBar button:hover,
-#frequentBar button:hover{
+#frequentBar button:hover {
+  transform: translateY(-2px);
 
-    transform:translateY(-2px);
-
-    border-color:var(--accent);
-
+  border-color: var(--accent);
 }
 
 #favoritesBar button:active,
-#frequentBar button:active{
-
-    transform:scale(.96);
-
+#frequentBar button:active {
+  transform: scale(0.96);
 }
