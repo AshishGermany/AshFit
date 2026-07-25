@@ -19,9 +19,7 @@ function ensureTodayExists() {
 // =====================
 
 let foods =
-JSON.parse(localStorage.getItem("foods"))
-||
-structuredClone(defaultFoods);
+  JSON.parse(localStorage.getItem("foods")) || structuredClone(defaultFoods);
 
 // =====================
 // FAV FOODS DATA
@@ -83,7 +81,8 @@ let today = ensureTodayExists();
 // =====================
 
 function addNewFood() {
-  const name = document.getElementById("foodName").value.toLowerCase().trim();
+  const displayName = document.getElementById("foodName").value.trim();
+  const name = displayName.toLowerCase();
   const cal = parseFloat(document.getElementById("foodCal").value);
   const protein = parseFloat(document.getElementById("foodProtein").value);
 
@@ -98,7 +97,7 @@ function addNewFood() {
   const edible = parseFloat(document.getElementById("foodEdible").value);
 
   foods[name] = {
-    name,
+    name: displayName,
 
     calories: cal,
 
@@ -127,13 +126,11 @@ function addNewFood() {
 // =====================
 
 function deleteFood(name) {
+  delete foods[name];
 
-    delete foods[name];
+  saveFoods();
 
-    saveFoods();
-
-    refreshUI();
-
+  refreshUI();
 }
 
 // =====================
@@ -158,8 +155,7 @@ function editFood(name) {
     document.getElementById("foodEdible").value =
       (food.edibleFactor || 1) * 100;
   }
-  document.getElementById("foodMode")
-    .dispatchEvent(new Event("change"));
+  document.getElementById("foodMode").dispatchEvent(new Event("change"));
 }
 
 // ================================

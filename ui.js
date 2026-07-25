@@ -91,8 +91,8 @@ function renderFoodLibrary() {
 
     const div = document.createElement("div");
 
-    div.className = "item";
-
+    div.className = "item"; 
+    
     div.innerHTML = `
       <b>${val.name || name}</b><br>
       ${getCalories(val)} kcal • ${getProtein(val)}g protein
