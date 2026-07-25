@@ -287,3 +287,116 @@ Planned:
 - Add food icons to UI
 - Redesign Daily Log cards
 - Improve mobile experience
+
+# AshFit v0.3.5 Alpha
+Codename: Stability & Persistence
+
+Release Date: July 2026
+
+---
+
+## Overview
+
+This release focused on improving the reliability of AshFit for daily use.
+
+Several bugs affecting data persistence, food editing, and the mobile experience were identified through real-world testing and resolved.
+
+This marks the first release where AshFit begins behaving like a dependable personal application rather than a prototype.
+
+---
+
+## Fixed
+
+### Food Persistence
+
+- Fixed an issue where foods added through the Food Library were not being saved to local storage.
+- Custom foods now persist after:
+  - Page refresh
+  - Browser restart
+  - PWA restart
+  - Device reboot
+
+---
+
+### Food Library
+
+- Improved Food Library refresh behavior.
+- Fixed UI updates after adding or deleting foods.
+- Editing foods is now more reliable.
+
+---
+
+### Display Improvements
+
+- Improved handling of display names throughout the application.
+- Continued migration away from internal database names toward user-friendly food names.
+
+---
+
+### Mobile Experience
+
+- Improved application behavior for day-to-day usage.
+- Continued polishing of the PWA experience.
+
+---
+
+## Internal Improvements
+
+- Simplified UI refresh workflow using `refreshUI()`.
+- Improved code consistency across Food Library operations.
+- Continued migration to the new nutrition database structure.
+
+---
+
+## Current Progress
+
+Completed:
+
+✓ Online PWA deployment
+
+✓ GitHub Pages hosting
+
+✓ Installable Android application
+
+✓ Favorites
+
+✓ Frequently Used foods
+
+✓ Food editing
+
+✓ Food persistence
+
+✓ Gram-based foods
+
+✓ Edible Portion calculations
+
+✓ Personal Nutrition Database foundation
+
+---
+
+## Planned for v0.4.0 Alpha
+
+Database Standardization
+
+- Standardize all food objects
+- Standardize internal naming
+- Complete migration of existing foods
+- Categories
+- Food icons
+- Better search
+- Improved database architecture
+
+This release will prepare AshFit for hundreds of foods while keeping the codebase clean and scalable.
+
+---
+
+## Project Status
+
+AshFit has officially entered the phase of becoming a long-term personal health platform.
+
+Current priorities:
+
+1. Build a complete personal food database.
+2. Improve usability for daily tracking.
+3. Continue refining the premium mobile experience.
+4. Expand into fitness, wellness, and health analytics.

@@ -1,10 +1,10 @@
-console.log("AshFit v0.3.4 Alpha");
+console.log("AshFit v0.3.5 Alpha");
 // =====================
 // ADD FOOD CORE
 // =====================
 
-function addToDay(f.name || input, cal, protein) {
-  ensureTodayExists();
+function addToDay(name, cal, protein) {
+  today = ensureTodayExists();
 
   // Safety fix for older saved data
   if (!data[today].freq) {
@@ -109,10 +109,9 @@ function addFood(rawInput) {
 
   input = foodKey;
 
-  const f = foods[input];
+const f = foods[input];
 
-  //addToDay(input, f.cal, f.protein);
-  addToDay(input, getCalories(f), getProtein(f));
+addToDay(f.name || input, getCalories(f), getProtein(f));
 
   finish();
 }

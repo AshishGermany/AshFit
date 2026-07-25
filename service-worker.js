@@ -5,7 +5,7 @@
 //self.addEventListener("fetch", (event) => {
 //  event.respondWith(fetch(event.request));
 //});
-const APP_VERSION = "v0.3.4 Alpha";
+const APP_VERSION = "v0.3.5 Alpha";
 const CACHE_NAME = `ashfit-v${APP_VERSION}`;
 
 const FILES_TO_CACHE = [
