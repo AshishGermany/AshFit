@@ -3,7 +3,7 @@ console.log("AshFit v0.3.4 Alpha");
 // ADD FOOD CORE
 // =====================
 
-function addToDay(name, cal, protein) {
+function addToDay(f.name || input, cal, protein) {
   ensureTodayExists();
 
   // Safety fix for older saved data
@@ -63,7 +63,7 @@ function addFood(rawInput) {
     const edibleWeight = quantity * edible;
 
     addToDay(
-      `${quantity}g ${matchedFood}`,
+      `${quantity}g ${f.name || matchedFood}`,
       (getCalories(f) * edibleWeight) / 100,
       (getProtein(f) * edibleWeight) / 100,
     );
@@ -92,7 +92,7 @@ function addFood(rawInput) {
     const f = foods[matchedFood];
 
     addToDay(
-      `${quantity} ${matchedFood}`,
+      `${quantity} ${f.name || matchedFood}`,
       getCalories(f) * quantity,
       getProtein(f) * quantity,
     );
@@ -130,7 +130,7 @@ function finish() {
 
   refreshUI();
 
-  document.getElementById("input").focus();
+  //document.getElementById("input").focus();
 }
 
 if ("serviceWorker" in navigator) {

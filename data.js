@@ -114,6 +114,7 @@ function addNewFood() {
   editingFood = null;
   document.getElementById("foodFavourite").checked = false;
 
+  saveFoods();
   refreshUI();
 
   document.getElementById("foodName").value = "";
@@ -126,11 +127,13 @@ function addNewFood() {
 // =====================
 
 function deleteFood(name) {
-  delete foods[name];
 
-  saveFoods();
-  renderFoodLibrary();
-  renderFrequentFoods();
+    delete foods[name];
+
+    saveFoods();
+
+    refreshUI();
+
 }
 
 // =====================
@@ -141,7 +144,7 @@ function editFood(name) {
   editingFood = name;
   const food = foods[name];
 
-  document.getElementById("foodName").value = name;
+  document.getElementById("foodName").value = food.name || name;
 
   document.getElementById("foodCal").value = getCalories(food);
 
@@ -155,6 +158,8 @@ function editFood(name) {
     document.getElementById("foodEdible").value =
       (food.edibleFactor || 1) * 100;
   }
+  document.getElementById("foodMode")
+    .dispatchEvent(new Event("change"));
 }
 
 // ================================

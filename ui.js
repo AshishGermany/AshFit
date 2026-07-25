@@ -164,7 +164,7 @@ function renderFrequentFoods() {
         const button =
             document.createElement("button");
 
-        button.textContent = name;
+        button.textContent = foods[name]?.name || name;
 
         button.onclick = () =>
             addFood(name);
