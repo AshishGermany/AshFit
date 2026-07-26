@@ -4,7 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
     <title>AshFit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <link rel="manifest" href="manifest.json" />
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -18,10 +25,16 @@
 
     <!-- SCREEN 1: TRACKER -->
     <div id="trackerScreen">
-      <div class="app-header">
-        <h1>AshFit</h1>
-        <div class="version">v0.3.5 Alpha</div>
+      <div class="dashboardHeader">
+        <div class="greeting">
+          <div id="greetingText"></div>
+
+          <div id="userName">Ashish</div>
+        </div>
+
+        <div id="dailyMessage"></div>
       </div>
+
       <div id="stats">
         <div class="statCard">
           <div class="statLabel">Calories</div>

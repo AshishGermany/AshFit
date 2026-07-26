@@ -409,3 +409,15 @@ Food Library foundation:
 - added categories
 - redesigned food cards
 - improved add food workflow
+
+AshFit v0.5.0 Alpha
+
+- Introduced global design system using CSS variables
+- Added premium Sora typography
+- Redesigned Home dashboard header
+- Added dynamic time-based greeting
+- Added personalized welcome message
+- Improved spacing and visual hierarchy
+- Removed legacy app title from Home screen
+- Established foundation for Phase 3 dashboard redesign
+

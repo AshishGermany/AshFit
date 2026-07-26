@@ -1,5 +1,21 @@
 let editingFood = null;
 
+//USER PROFLILE
+const defaultProfile = {
+  targetCalories: 2000,
+  targetProtein: 140,
+};
+
+let profile =
+  JSON.parse(localStorage.getItem("profile")) ||
+  structuredClone(defaultProfile);
+
+function saveProfile() {
+  localStorage.setItem("profile", JSON.stringify(profile));
+}
+
+
+
 function loadFoods() {
   const savedFoods = localStorage.getItem("foods");
 

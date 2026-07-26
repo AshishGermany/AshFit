@@ -1,5 +1,33 @@
 let activeCategory = "All";
 let foodSearchTerm = "";
+
+//GREETING FUNC
+function updateGreeting() {
+  const hour = new Date().getHours();
+
+  let greeting;
+
+  let message;
+
+  if (hour < 12) {
+    greeting = "Good Morning,";
+
+    message = "Let's build a great day.";
+  } else if (hour < 18) {
+    greeting = "Good Afternoon,";
+
+    message = "Keep the momentum going.";
+  } else {
+    greeting = "Good Evening,";
+
+    message = "Let's finish today strong.";
+  }
+
+  document.getElementById("greetingText").textContent = greeting;
+
+  document.getElementById("dailyMessage").textContent = message;
+}
+
 // =====================
 // FUNCTION UI
 // =====================
@@ -228,14 +256,11 @@ document.getElementById("foodSearch").addEventListener("input", function () {
   renderFoodLibrary();
 });
 
-function filterFoods(category){
+function filterFoods(category) {
+  activeCategory = category;
 
-    activeCategory = category;
-
-    renderFoodLibrary();
-
+  renderFoodLibrary();
 }
-
 
 function refreshUI() {
   updateUI();
@@ -247,4 +272,6 @@ function refreshUI() {
   renderFrequentFoods();
 
   lucide.createIcons();
+
+  updateGreeting();
 }

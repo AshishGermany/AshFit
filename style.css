@@ -5,6 +5,10 @@
 :root {
   --bg: #0f1115;
 
+  --surface: #161c26;
+
+  --surface2: #1e2633;
+
   --card: #1a1f29;
 
   --card-hover: #242b38;
@@ -13,16 +17,24 @@
 
   --text: #f5f7fa;
 
+  /*--text:#F8FAFC;*/
+
+  --muted: #94a3b8;
+
   --text-secondary: #b8c0cc;
+
+  --calories: #ffb347;
+
+  --protein: #36d399;
 
   --border: #2b3444;
 
   --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 
-  --radius: 18px;
+  --radius: 22px;
 }
 
-body {
+/*body {
   font-family: Inter, Arial, sans-serif;
 
   background: var(--bg);
@@ -36,6 +48,18 @@ body {
   padding: 18px;
 
   line-height: 1.5;
+}*/
+
+body {
+  margin: 0;
+
+  padding: 20px;
+
+  background: var(--bg);
+
+  color: var(--text);
+
+  font-family: "Sora", sans-serif;
 }
 
 h2,
@@ -373,4 +397,36 @@ h3 {
 #favoritesBar button:active,
 #frequentBar button:active {
   transform: scale(0.96);
+}
+
+.dashboardHeader {
+  margin-bottom: 32px;
+}
+
+#greetingText {
+  font-size: 18px;
+
+  color: var(--muted);
+
+  font-weight: 500;
+}
+
+#userName {
+  font-size: 38px;
+
+  font-weight: 700;
+
+  margin-top: 4px;
+
+  letter-spacing: -1px;
+}
+
+#dailyMessage {
+  margin-top: 12px;
+
+  color: var(--muted);
+
+  font-size: 15px;
+
+  line-height: 1.5;
 }
