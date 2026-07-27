@@ -430,3 +430,190 @@ h3 {
 
   line-height: 1.5;
 }
+
+/*ORB DETAILS*/
+/*===========*/
+
+/*The title/Heading for the ORB*/
+.orbCard {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  margin-bottom: 40px;
+}
+
+.orbTitle {
+  font-size: 20px;
+
+  font-weight: 600;
+
+  margin-bottom: 18px;
+}
+/*======================*/
+
+/*Main Orb design, balck SVG sircle, Position etc*/
+.orb {
+  position: relative;
+  width: 220px;
+  height: 220px;
+}
+
+.orb svg {
+  position: relative;
+  inset: 0;
+  transform: rotate(-90deg);
+  z-index: 1;
+}
+
+/*Progress ring default grey color*/
+.orbBackground {
+  fill: none;
+  stroke: #232c39;
+  stroke-width: 16;
+}
+/*=====================================*/
+
+/*MAIN OUTER RING*/
+/*The Outer progress ring, made by punching out middle*/
+/*from a basic circle and only having a stroke*/
+.orbProgress {
+  fill: none;
+  /*stroke: url(#calorieGradient);*/
+  stroke-width: 16;
+  stroke-linecap: round;
+  stroke-dasharray: 565;
+  stroke-dashoffset: 565;
+  transition: stroke-dashoffset 0.6s ease;
+  filter: drop-shadow(0 0 6px rgba(255, 180, 71, 0.5))
+    drop-shadow(0 0 14px rgba(255, 180, 71, 0.25));
+}
+
+/*Orange Protein dropshadow*/
+.orbProgress.calorie {
+  filter: drop-shadow(0 0 12px rgba(255, 154, 60, 0.7));
+}
+/*Blue Protein dropshadow*/
+.orbProgress.protein {
+  filter: drop-shadow(0 0 12px rgba(45, 140, 255, 0.7));
+}
+
+/*Don't actually know why this is here*/
+.orbCenter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+/*The complete container which decides the placement*/
+/*and position of both orbs realtive to each other*/
+.orbContainer {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin: 30px 0; /*top margin*/
+}
+
+/*The glass element of the orb, GLASSmorphism*/
+.orbGlass {
+  position: absolute;
+  /*top: 28.5px;
+  left: 28.5px;
+  width: 161px;
+  height: 161px;*/
+  top: 50%;
+  left: 50%;
+  width: 73%;
+  height: 73%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.05) 40%,
+    rgba(255, 255, 255, 0.02) 65%,
+    rgba(255, 255, 255, 0.01)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    inset 0 2px 6px rgba(255, 255, 255, 0.08),
+    inset 0 -8px 18px rgba(0, 0, 0, 0.35),
+    0 12px 30px rgba(0, 0, 0, 0.35);
+  z-index: 2;
+}
+
+.orbGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  filter: blur(30px);
+}
+
+.orb.calorie .orbGlow {
+  background: radial-gradient(
+    circle,
+    rgba(255, 154, 60, 0.45),
+    transparent 70%
+  );
+}
+
+.orb.protein .orbGlow {
+  background: radial-gradient(
+    circle,
+    rgba(45, 140, 255, 0.45),
+    transparent 70%
+  );
+}
+
+/*The CALORIE VALUES START*/
+
+#calorieRemaining {
+  font-size: 48px; /*actual remianing calories font size*/
+  font-weight: 700;
+}
+
+#proteinRemaining {
+  font-size: 48px; /*actual remianing protein font size*/
+  font-weight: 700;
+}
+
+/*
+#calorieStats {
+  margin-top: 18px;
+  color: var(--muted);
+}*/
+
+/*#calorieRemaining,
+.orbUnit 
+{
+  position: relative;
+  z-index: 5;
+}*/
+
+/*.orbUnit {
+  color: var(--muted);
+  margin-top: 6px;
+}*/
+
+/*underglow for protein orb */
+/*.orb::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 181, 71, 0.836);
+  filter: blur(20px);
+  z-index: -1;
+}*/

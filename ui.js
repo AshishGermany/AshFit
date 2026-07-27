@@ -33,10 +33,14 @@ function updateGreeting() {
 // =====================
 
 function updateUI() {
-  document.getElementById("calories").innerText = Math.round(data[today].cal);
+  //document.getElementById("calories").innerText = Math.round(data[today].cal);
 
-  document.getElementById("protein").innerText = data[today].protein.toFixed(1);
+  //document.getElementById("protein").innerText = data[today].protein.toFixed(1);
+  const proteinElement = document.getElementById("protein");
 
+  if (proteinElement) {
+    proteinElement.innerText = data[today].protein.toFixed(1);
+  }
   const logDiv = document.getElementById("log");
   logDiv.innerHTML = "";
 
@@ -169,14 +173,24 @@ function renderFoodLibrary() {
   lucide.createIcons();
 }
 
-function showTracker() {
-  document.getElementById("trackerScreen").style.display = "block";
-  document.getElementById("libraryScreen").style.display = "none";
-}
-
 function showLibrary() {
   document.getElementById("trackerScreen").style.display = "none";
+
   document.getElementById("libraryScreen").style.display = "block";
+
+  renderFoodLibrary();
+
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+}
+
+function showTracker() {
+  document.getElementById("libraryScreen").style.display = "none";
+
+  document.getElementById("trackerScreen").style.display = "block";
+
+  refreshUI();
 }
 
 function renderFavorites() {
@@ -262,6 +276,21 @@ function filterFoods(category) {
   renderFoodLibrary();
 }
 
+//ORBS
+function updateOrb(current, goal, progressId, remainingId) {
+  const remaining = Math.max(0, goal - current);
+
+  document.getElementById(remainingId).textContent = Math.round(remaining);
+
+  const progress = Math.min(current / goal, 1);
+
+  const circumference = 2 * Math.PI * 90;
+
+  const offset = circumference * (1 - progress);
+
+  document.getElementById(progressId).style.strokeDashoffset = offset;
+}
+
 function refreshUI() {
   updateUI();
 
@@ -274,4 +303,18 @@ function refreshUI() {
   lucide.createIcons();
 
   updateGreeting();
+
+  updateOrb(
+    data[today].cal,
+    profile.targetCalories,
+    "calorieProgress",
+    "calorieRemaining",
+  );
+
+  updateOrb(
+    data[today].protein,
+    profile.targetProtein,
+    "proteinProgress",
+    "proteinRemaining",
+  );
 }

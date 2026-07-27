@@ -421,3 +421,35 @@ AshFit v0.5.0 Alpha
 - Removed legacy app title from Home screen
 - Established foundation for Phase 3 dashboard redesign
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Now any future orb can use them:
+
+Calories → Orange
+Protein → Blue
+Water → Cyan
+Weight → Purple
+Steps → Green

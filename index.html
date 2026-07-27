@@ -3,28 +3,39 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
-    <title>AshFit</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
 
+    <title>AshFit</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="style.css" />
     <link rel="manifest" href="manifest.json" />
+
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
 
   <body>
+    <!-- NAVIGATION -->
+
     <div id="nav">
       <button onclick="showTracker()">Tracker</button>
+
       <button onclick="showLibrary()">Food Library</button>
     </div>
 
-    <!-- SCREEN 1: TRACKER -->
+    <!-- =========================
+TRACKER SCREEN
+========================= -->
+
     <div id="trackerScreen">
+      <!-- HEADER -->
+
       <div class="dashboardHeader">
         <div class="greeting">
           <div id="greetingText"></div>
@@ -35,51 +46,142 @@
         <div id="dailyMessage"></div>
       </div>
 
-      <div id="stats">
-        <div class="statCard">
-          <div class="statLabel">Calories</div>
+      <div class="orbContainer">
+        <!--start of ORBS container-->
+<!-- =========================
+CALORIE ORB
+========================= -->
 
-          <div class="statValue">
-            <span id="calories">0</span>
+        <div class="orbCard">
+          <div class="orbTitle">Calories</div>
+
+          <div class="orb calorie">
+            <div class="orbGlow"></div>
+
+            <svg width="220" height="220" viewBox="0 0 220 220">
+              <defs>
+                <linearGradient
+                  id="gradientOrange"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stop-color="#FFD36E" />
+
+                  <stop offset="100%" stop-color="#FF9A3C" />
+                </linearGradient>
+              </defs>
+
+              <circle class="orbBackground" cx="110" cy="110" r="90" />
+
+              <circle
+                id="calorieProgress"
+                class="orbProgress calorie"
+                stroke="url(#gradientOrange)"
+                cx="110"
+                cy="110"
+                r="90"
+              />
+            </svg>
+
+            <div class="orbGlass"></div>
+
+            <div class="orbCenter">
+              <div id="calorieRemaining">720</div>
+            </div>
           </div>
-
-          <div class="statUnit">kcal</div>
         </div>
 
-        <div class="statCard">
-          <div class="statLabel">Protein</div>
+<!-- =========================
+PROTEIN ORB
+========================= -->
 
-          <div class="statValue">
-            <span id="protein">0</span>
+        <div class="orbCard">
+          <div class="orbTitle">Calories</div>
+
+          <div class="orb protein">
+            <div class="orbGlow"></div>
+
+            <svg width="220" height="220" viewBox="0 0 220 220">
+              <defs>
+                <linearGradient
+                  id="gradientBlue"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stop-color="#62E6FF"/>
+
+                  <stop offset="100%" stop-color="#2D8CFF"/>
+                </linearGradient>
+              </defs>
+
+              <circle class="orbBackground" cx="110" cy="110" r="90" />
+
+              <circle
+                id="proteinProgress"
+                class="orbProgress protein"
+                stroke="url(#gradientBlue)"
+                cx="110"
+                cy="110"
+                r="90"
+              />
+            </svg>
+
+            <div class="orbGlass"></div>
+
+            <div class="orbCenter">
+              <div id="proteinRemaining">720</div>
+            </div>
           </div>
-
-          <div class="statUnit">g</div>
         </div>
-      </div>
+
+
+      </div> <!--end of ORBS container-->
+      <!-- =========================
+QUICK ADD PLACEHOLDER
+========================= -->
+
       <h3>Favorites</h3>
+
       <div id="favoritesBar"></div>
+
       <h3>🔥 Frequently Used</h3>
+
       <div id="frequentBar"></div>
+
       <h3>Quick Meals</h3>
+
       <button onclick="addFood('work breakfast')">Work Breakfast</button>
+
       <button onclick="addFood('daily breakfast')">Daily Breakfast</button>
 
       <br /><br />
 
       <input type="text" id="input" placeholder="Type food..." />
+
       <div class="suggestions" id="suggestions"></div>
 
       <button onclick="addFood()">Add</button>
+
       <button onclick="undoLast()">Undo Last</button>
+
       <button onclick="resetDay()">Reset Day</button>
 
       <div class="log" id="log"></div>
     </div>
 
-    <!-- SCREEN 2: FOOD LIBRARY -->
-    <div id="libraryScreen" style="display: none">
-      <h3>Add Food</h3>
+    <!-- =========================
+FOOD LIBRARY SCREEN
+========================= -->
+
+    <div id="libraryScreen">
+      <h3>Food Library</h3>
+
       <input id="foodSearch" placeholder="Search food..." />
+
       <div id="foodFilters">
         <button onclick="filterFoods('All')">All</button>
 
@@ -91,7 +193,9 @@
 
         <button onclick="filterFoods('Snacks')">Snacks</button>
       </div>
+
       <br />
+
       <input id="foodName" placeholder="Food name" />
 
       <input id="foodCal" placeholder="Calories" />
@@ -112,22 +216,33 @@
 
       <select id="foodCategory">
         <option value="Protein">Protein</option>
+
         <option value="Dairy">Dairy</option>
+
         <option value="Drinks">Drinks</option>
+
         <option value="Bakery">Bakery</option>
+
         <option value="Snacks">Snacks</option>
+
         <option value="Fruit">Fruit</option>
+
         <option value="Vegetables">Vegetables</option>
+
         <option value="Ready Meals">Ready Meals</option>
+
         <option value="Condiments">Condiments</option>
+
         <option value="Other">Other</option>
       </select>
 
       <br />
-      <label for="foodMode">Mode</label>
+
+      <label for="foodMode"> Mode </label>
 
       <select id="foodMode">
         <option value="unit">Per Unit</option>
+
         <option value="grams">Per 100 g</option>
       </select>
 
@@ -145,23 +260,28 @@
       />
 
       <br />
+
       <label>
         Favourite
+
         <input type="checkbox" id="foodFavourite" />
       </label>
 
       <button onclick="addNewFood()">Add Food</button>
 
-      <!--<h3>Food Library</h3>-->
-
       <div id="foodLibrary"></div>
     </div>
 
-    <!-- SCRIPTS (ALWAYS AT END) -->
+    <!-- SCRIPTS -->
+
     <script src="foods.js"></script>
+
     <script src="data.js"></script>
+
     <script src="ui.js"></script>
+
     <script src="nutrition.js"></script>
+
     <script src="app.js"></script>
   </body>
 </html>
