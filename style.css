@@ -434,31 +434,36 @@ h3 {
 /*ORB DETAILS*/
 /*===========*/
 
+/*Scaling/Breating Animation*/
+@keyframes breathe
+{
+0%{transform:scale(1);}
+50%{transform:scale(1.025);}
+100%{transform:scale(1);}
+}
+
 /*The title/Heading for the ORB*/
 .orbCard {
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
-  margin-bottom: 40px;
+  margin-bottom: 5px;
 }
 
 .orbTitle {
   font-size: 20px;
-
   font-weight: 600;
-
-  margin-bottom: 18px;
+  color: var(--muted);
+  margin-bottom: 2px;
 }
-/*======================*/
 
+/*======================*/
 /*Main Orb design, balck SVG sircle, Position etc*/
 .orb {
   position: relative;
   width: 220px;
   height: 220px;
+  animation:breathe 4s ease-in-out infinite;
 }
 
 .orb svg {
@@ -486,20 +491,21 @@ h3 {
   stroke-linecap: round;
   stroke-dasharray: 565;
   stroke-dashoffset: 565;
-  transition: stroke-dashoffset 0.6s ease;
-  filter: drop-shadow(0 0 6px rgba(255, 180, 71, 0.5))
-    drop-shadow(0 0 14px rgba(255, 180, 71, 0.25));
+  transition: stroke-dashoffset .8s cubic-bezier(.22,1,.36,1);
+  /*transition: stroke-dashoffset 1s ease;*/
+  /*filter: drop-shadow(0 0 6px rgba(255, 180, 71, 0.5))
+    drop-shadow(0 0 14px rgba(255, 180, 71, 0.25));*/
 }
 
-/*Orange Protein dropshadow*/
+/*Orange Protein dropshadow/outer glow
 .orbProgress.calorie {
   filter: drop-shadow(0 0 12px rgba(255, 154, 60, 0.7));
 }
-/*Blue Protein dropshadow*/
+/*Blue Protein dropshadow
 .orbProgress.protein {
   filter: drop-shadow(0 0 12px rgba(45, 140, 255, 0.7));
-}
-
+} 
+*/
 /*Don't actually know why this is here*/
 .orbCenter {
   position: absolute;
@@ -541,6 +547,15 @@ h3 {
     rgba(255, 255, 255, 0.02) 65%,
     rgba(255, 255, 255, 0.01)
   );
+  /*
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255,255,255,.22),
+    rgba(255,255,255,.08) 45%,
+    rgba(255,255,255,.03) 75%,
+    transparent
+  );
+  */
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
   box-shadow:
@@ -550,11 +565,16 @@ h3 {
   z-index: 2;
 }
 
+/*Orb underglow*/
 .orbGlow {
   position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  filter: blur(30px);
+  bottom: 0px;
+  left: 20px;
+  inset: 1;
+  border-radius: 100%;
+  filter: blur(10px);
+  width: 110px;
+  height: 110px;
 }
 
 .orb.calorie .orbGlow {
@@ -578,11 +598,17 @@ h3 {
 #calorieRemaining {
   font-size: 48px; /*actual remianing calories font size*/
   font-weight: 700;
+  letter-spacing:-2px;
+  line-height:1;
 }
+
+/*The PROTEIN VALUES START*/
 
 #proteinRemaining {
   font-size: 48px; /*actual remianing protein font size*/
   font-weight: 700;
+  letter-spacing:-2px;
+  line-height:1;
 }
 
 /*
