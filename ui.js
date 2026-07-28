@@ -1,5 +1,6 @@
 let activeCategory = "All";
 let foodSearchTerm = "";
+let logExpanded = false;
 
 //GREETING FUNC
 function updateGreeting() {
@@ -192,56 +193,84 @@ function showTracker() {
 
   refreshUI();
 }
+//
+// //function renderFavorites() {
+// //  const container = document.getElementById("favoritesBar");
 
-function renderFavorites() {
-  const container = document.getElementById("favoritesBar");
+// //  container.innerHTML = "";
 
-  container.innerHTML = "";
+//   Object.values(foods)
 
-  Object.values(foods)
+//     .filter((food) => food.favourite)
 
-    .filter((food) => food.favourite)
+//     .forEach((food) => {
+//       const button = document.createElement("button");
 
-    .forEach((food) => {
-      const button = document.createElement("button");
+//       button.textContent = food.name;
 
-      button.textContent = food.name;
+//       button.onclick = () => addFood(food.name);
 
-      button.onclick = () => addFood(food.name);
+//       container.appendChild(button);
+//     });
+// }
 
-      container.appendChild(button);
-    });
-}
+// function renderFrequentFoods() {
+//   const container = document.getElementById("frequentBar");
 
-function renderFrequentFoods() {
-  const container = document.getElementById("frequentBar");
+//   container.innerHTML = "";
 
-  container.innerHTML = "";
+//   const freq = data[today].freq || {};
 
-  const freq = data[today].freq || {};
+//   Object.entries(freq)
 
-  Object.entries(freq)
+//     .sort((a, b) => b[1] - a[1])
 
-    .sort((a, b) => b[1] - a[1])
+//     .slice(0, 5)
 
-    .slice(0, 5)
+//     .forEach(([name, count]) => {
+//       const button = document.createElement("button");
 
-    .forEach(([name, count]) => {
-      const button = document.createElement("button");
+//       button.textContent = foods[name]?.name || name;
 
-      button.textContent = foods[name]?.name || name;
+//       button.onclick = () => addFood(name);
 
-      button.onclick = () => addFood(name);
-
-      container.appendChild(button);
-    });
-}
+//       container.appendChild(button);
+//     });
+// }
 
 function getFoodIcon(food) {
   if (food.type === "drink") {
     return `<i data-lucide="cup-soda"></i>`;
   }
   return `<i data-lucide="utensils"></i>`;
+}
+
+function renderQuickAdd() {
+  const container = document.getElementById("quickAddBar");
+
+  container.innerHTML = "";
+
+  const quickFoods = [
+    "daily breakfast",
+    "Home Cappuccino",
+    ...Object.entries(data[today].freq || {})
+      .sort((a, b) => b[1] - a[1])
+      .map(([name]) => name),
+  ];
+
+  const unique = [...new Set(quickFoods)];
+
+  unique.slice(0, 8).forEach((name) => {
+    const button = document.createElement("button");
+
+    button.className = "quickAddPill";
+
+    button.textContent = foods[name]?.name || name;
+
+    button.onclick = () => addFood(name);
+
+    container.appendChild(button);
+  });
 }
 
 // =====================
@@ -291,14 +320,41 @@ function updateOrb(current, goal, progressId, remainingId) {
   document.getElementById(progressId).style.strokeDashoffset = offset;
 }
 
+//TOGGLE TODAYS LOG
+
+function toggleLog() {
+  logExpanded = !logExpanded;
+
+  const log = document.getElementById("log");
+
+  const button = document.getElementById("logToggle");
+
+  if (logExpanded) {
+    log.style.display = "block";
+
+    button.textContent = "Today's Log ▲";
+  } else {
+    log.style.display = "none";
+
+    button.textContent = "Today's Log ▼";
+  }
+}
+
+//FAB - + BUTTON to access Food Search
+function showFoodSearch() {
+  alert("Food Search coming in Phase 3.7");
+}
+
 function refreshUI() {
   updateUI();
 
   renderFoodLibrary();
 
-  renderFavorites();
+  //renderFavorites();
 
-  renderFrequentFoods();
+  //renderFrequentFoods();
+
+  renderQuickAdd();
 
   lucide.createIcons();
 

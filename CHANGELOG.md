@@ -421,8 +421,21 @@ AshFit v0.5.0 Alpha
 - Removed legacy app title from Home screen
 - Established foundation for Phase 3 dashboard redesign
 
+## v0.3.5 Alpha - Premium dashboard redesign
 
-
+- Dashboard greeting
+- Dynamic greeting based on time of day
+- Calorie Orb
+- Protein Orb
+- Orb animations and glass effect
+- Target calories/protein support
+- Food types (food/drink)
+- Categories
+- Search and filtering
+- Food Library redesign
+- Quick Add replacing the old Favorites/Frequent sections
+- Removal of the old Home screen clutter
+- Overall dashboard modernization
 
 
 

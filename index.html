@@ -48,7 +48,7 @@ TRACKER SCREEN
 
       <div class="orbContainer">
         <!--start of ORBS container-->
-<!-- =========================
+        <!-- =========================
 CALORIE ORB
 ========================= -->
 
@@ -93,7 +93,7 @@ CALORIE ORB
           </div>
         </div>
 
-<!-- =========================
+        <!-- =========================
 PROTEIN ORB
 ========================= -->
 
@@ -112,9 +112,9 @@ PROTEIN ORB
                   x2="100%"
                   y2="100%"
                 >
-                  <stop offset="0%" stop-color="#62E6FF"/>
+                  <stop offset="0%" stop-color="#62E6FF" />
 
-                  <stop offset="100%" stop-color="#2D8CFF"/>
+                  <stop offset="100%" stop-color="#2D8CFF" />
                 </linearGradient>
               </defs>
 
@@ -137,40 +137,25 @@ PROTEIN ORB
             </div>
           </div>
         </div>
-
-
-      </div> <!--end of ORBS container-->
+      </div>
+      <!--end of ORBS container-->
       <!-- =========================
-QUICK ADD PLACEHOLDER
+QUICK ADD 
 ========================= -->
+      <div class="quickAddCard">
+        <div class="sectionTitle">Quick Add</div>
 
-      <h3>Favorites</h3>
+        <div id="quickAddBar"></div>
+      </div>
+      <br />
 
-      <div id="favoritesBar"></div>
+      <div class="logCard">
+        <button id="logToggle" class="logToggle" onclick="toggleLog()">
+          Today's Log ▼
+        </button>
 
-      <h3>🔥 Frequently Used</h3>
-
-      <div id="frequentBar"></div>
-
-      <h3>Quick Meals</h3>
-
-      <button onclick="addFood('work breakfast')">Work Breakfast</button>
-
-      <button onclick="addFood('daily breakfast')">Daily Breakfast</button>
-
-      <br /><br />
-
-      <input type="text" id="input" placeholder="Type food..." />
-
-      <div class="suggestions" id="suggestions"></div>
-
-      <button onclick="addFood()">Add</button>
-
-      <button onclick="undoLast()">Undo Last</button>
-
-      <button onclick="resetDay()">Reset Day</button>
-
-      <div class="log" id="log"></div>
+        <div id="log" class="log" style="display: none"></div>
+      </div>
     </div>
 
     <!-- =========================
@@ -283,5 +268,11 @@ FOOD LIBRARY SCREEN
     <script src="nutrition.js"></script>
 
     <script src="app.js"></script>
+
+    <div class="fab" onclick="showFoodSearch()">
+
+    + </div>
+
+
   </body>
 </html>
