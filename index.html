@@ -22,13 +22,13 @@
 
   <body>
     <!-- NAVIGATION -->
-
-    <div id="nav">
+    <!--=========================-->
+    <!--<div id="nav">
       <button onclick="showTracker()">Tracker</button>
 
       <button onclick="showLibrary()">Food Library</button>
     </div>
-
+     -->
     <!-- =========================
 TRACKER SCREEN
 ========================= -->
@@ -269,10 +269,25 @@ FOOD LIBRARY SCREEN
 
     <script src="app.js"></script>
 
+    <!--
     <div class="fab" onclick="showFoodSearch()">
 
     + </div>
+    -->
+    <!-- Bottom Navigation -->
 
+    <nav class="bottomNav">
+      <button class="navItem active" onclick="showTracker()">
+        <span>⌂</span>
+        <small>Home</small>
+      </button>
 
+      <button class="navAdd" onclick="showFoodSearch()">+</button>
+
+      <button class="navItem" onclick="showLibrary()">
+        <span>▣</span>
+        <small>Foods</small>
+      </button>
+    </nav>
   </body>
 </html>

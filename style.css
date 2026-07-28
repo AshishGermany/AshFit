@@ -3,34 +3,20 @@
 ========================== */
 
 :root {
-  --bg: #0f1115;
-
+  --bg: #000000;/*#0f1115*/
   --surface: #161c26;
-
   --surface2: #1e2633;
-
   --card: #1a1f29;
-
   --card-hover: #242b38;
-
   --accent: #38bdf8;
-
   --text: #f5f7fa;
-
   /*--text:#F8FAFC;*/
-
   --muted: #94a3b8;
-
   --text-secondary: #b8c0cc;
-
   --calories: #ffb347;
-
   --protein: #36d399;
-
   --border: #2b3444;
-
   --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-
   --radius: 22px;
 }
 
@@ -765,4 +751,66 @@ h3 {
 }
 .fab:active{
   transform:scale(.94);
+}
+
+/*BOTTOM NAV*/
+.bottomNav {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 430px;
+    height: 75px;
+    background: rgba(30,34,42,0.85);
+    backdrop-filter: blur(15px);
+    border-radius: 28px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:
+      0 15px 40px rgba(0,0,0,.35);
+    z-index:1000;
+}
+.navItem {
+    background:none;
+    border:none;
+    color:#aaa;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    font-size:14px;
+}
+.navItem span {
+    font-size:25px;
+}
+.navItem small {
+    font-size:12px;
+}
+.navItem.active {
+    color:white;
+}
+
+.navAdd {
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    border:none;
+    margin-top:-35px;
+    background:
+      linear-gradient(
+          135deg,
+          #FFD36E,
+          #FF9A3C
+      );
+    color:white;
+    font-size:40px;
+    font-weight:300;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:
+      0 10px 30px rgba(255,154,60,.4);
 }

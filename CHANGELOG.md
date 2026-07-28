@@ -437,9 +437,16 @@ AshFit v0.5.0 Alpha
 - Removal of the old Home screen clutter
 - Overall dashboard modernization
 
+## v0.3.6 Alpha - Add bottom navigation foundation
 
-
-
+- Changed the background to BLACK #000000
+Phase 4.1 completed — Bottom Navigation Foundation
+✅ Removed old top navigation
+✅ Added floating bottom navigation bar
+✅ Added Home / Foods navigation buttons
+✅ Added central Add action button placeholder
+✅ Added glass-style navigation styling
+✅ Kept existing Home and Food Library functionality intact
 
 
 

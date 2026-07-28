@@ -342,7 +342,7 @@ function toggleLog() {
 
 //FAB - + BUTTON to access Food Search
 function showFoodSearch() {
-  alert("Food Search coming in Phase 3.7");
+  alert("Food Search coming soon");
 }
 
 function refreshUI() {
