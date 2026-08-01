@@ -109,9 +109,9 @@ function addFood(rawInput) {
 
   input = foodKey;
 
-const f = foods[input];
+  const f = foods[input];
 
-addToDay(f.name || input, getCalories(f), getProtein(f));
+  addToDay(f.name || input, getCalories(f), getProtein(f));
 
   finish();
 }
@@ -121,15 +121,15 @@ addToDay(f.name || input, getCalories(f), getProtein(f));
 // =====================
 
 function finish() {
-  document.getElementById("input").value = "";
+  const input = document.getElementById("input");
+  if (input) input.value = "";
 
-  document.getElementById("suggestions").innerHTML = "";
+  const suggestions = document.getElementById("suggestions");
+  if (suggestions) suggestions.replaceChildren();
 
   save();
 
   refreshUI();
-
-  //document.getElementById("input").focus();
 }
 
 if ("serviceWorker" in navigator) {
@@ -141,3 +141,4 @@ if ("serviceWorker" in navigator) {
 // =====================
 
 refreshUI();
+setActiveTab("home");

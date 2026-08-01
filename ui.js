@@ -179,6 +179,8 @@ function showLibrary() {
 
   document.getElementById("libraryScreen").style.display = "block";
 
+   setActiveTab("foods");
+
   renderFoodLibrary();
 
   if (window.lucide) {
@@ -187,10 +189,11 @@ function showLibrary() {
 }
 
 function showTracker() {
-  document.getElementById("libraryScreen").style.display = "none";
-
   document.getElementById("trackerScreen").style.display = "block";
 
+  document.getElementById("libraryScreen").style.display = "none";
+
+  setActiveTab("home");
   refreshUI();
 }
 //
@@ -343,6 +346,21 @@ function toggleLog() {
 //FAB - + BUTTON to access Food Search
 function showFoodSearch() {
   alert("Food Search coming soon");
+}
+
+//BOTTOM NAV ACTIVE ICON
+function setActiveTab(tab) {
+  document
+    .querySelectorAll(".navItem")
+    .forEach((item) => item.classList.remove("active"));
+
+  if (tab === "home") {
+    document.getElementById("navHome").classList.add("active");
+  }
+
+  if (tab === "foods") {
+    document.getElementById("navFoods").classList.add("active");
+  }
 }
 
 function refreshUI() {
