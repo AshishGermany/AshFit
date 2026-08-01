@@ -149,14 +149,38 @@ QUICK ADD
       </div>
       <br />
 
-      <div class="logCard">
-        <button id="logToggle" class="logToggle" onclick="toggleLog()">
-          Today's Log ▼
+<div class="activityCard">
+    <div class="activityHeader">
+        <h3>Today's Activity</h3>
+
+        <button
+            class="activityExpand"
+            onclick="toggleLog()">
+
+            View Log ▼
+
         </button>
 
-        <div id="log" class="log" style="display: none"></div>
-      </div>
     </div>
+    <div id="lastEntry"></div>
+    <div class="activityActions">
+
+        <button
+            class="secondaryButton"
+            onclick="undoLast()">
+
+            Undo
+
+        </button>
+    </div>
+
+    <div
+        id="log"
+        class="log"
+        style="display:none">
+    </div>
+</div>
+</div>
 
     <!-- =========================
 FOOD LIBRARY SCREEN
@@ -257,17 +281,7 @@ FOOD LIBRARY SCREEN
       <div id="foodLibrary"></div>
     </div>
 
-    <!-- SCRIPTS -->
 
-    <script src="foods.js"></script>
-
-    <script src="data.js"></script>
-
-    <script src="ui.js"></script>
-
-    <script src="nutrition.js"></script>
-
-    <script src="app.js"></script>
 
     <!--
     <div class="fab" onclick="showFoodSearch()">
@@ -289,5 +303,22 @@ FOOD LIBRARY SCREEN
         <small>Foods</small>
       </button>
     </nav>
+
+
+    
+    <!-- SCRIPTS -->
+
+    <script src="foods.js"></script>
+
+    <script src="data.js"></script>
+
+    <script src="ui.js"></script>
+
+    <script src="nutrition.js"></script>
+
+    <script src="app.js"></script>
+
+
+
   </body>
 </html>

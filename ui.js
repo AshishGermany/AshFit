@@ -179,7 +179,7 @@ function showLibrary() {
 
   document.getElementById("libraryScreen").style.display = "block";
 
-   setActiveTab("foods");
+  setActiveTab("foods");
 
   renderFoodLibrary();
 
@@ -363,8 +363,50 @@ function setActiveTab(tab) {
   }
 }
 
+//LAST ENTRY PILL
+function updateLastEntry() {
+  const container = document.getElementById("lastEntry");
+
+  if (!container) return;
+
+  const entries = data[today].log;
+
+  if (entries.length === 0) {
+    container.innerHTML = `
+
+            <div class="emptyState">
+
+                Nothing logged yet.
+
+            </div>
+
+        `;
+
+    return;
+  }
+
+  const last = entries[entries.length - 1];
+
+  container.innerHTML = `
+
+        <div class="lastFood">
+
+            <strong>${last.name}</strong>
+
+            <br>
+
+            ${Math.round(last.cal)} kcal •
+            ${last.protein.toFixed(1)} g protein
+
+        </div>
+
+    `;
+}
+
 function refreshUI() {
   updateUI();
+
+  updateLastEntry();
 
   renderFoodLibrary();
 

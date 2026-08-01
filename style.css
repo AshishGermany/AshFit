@@ -221,9 +221,10 @@ h3 {
 }
 
 .item {
-  background: var(--card);
-
-  border: 1px solid var(--border);
+  /*background: var(--card);
+  border: 1px solid var(--border);*/
+  background: black;
+  border: 2px solid rgba(255, 255, 255, 0.08);
 
   border-radius: 16px;
 
@@ -657,7 +658,9 @@ h3 {
   padding:12px 18px;
   border:none;
   border-radius:999px;
-  /*background:#20242d;*/
+  background:#000000;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  /*background:#20242d;
   background: radial-gradient(
     circle at 30% 80%,
     rgba(255, 255, 255, 0.18),
@@ -671,6 +674,7 @@ h3 {
     inset 0 2px 6px rgba(255, 255, 255, 0.08),
     inset 0 -8px 18px rgba(0, 0, 0, 0.35),
     0 12px 30px rgba(0, 0, 0, 0.35);
+  */
   color:white;
   cursor:pointer;
   transition:.25s;
@@ -690,6 +694,8 @@ h3 {
   padding:16px;
   font-size:16px;
   font-weight:600;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  /*
     background: radial-gradient(
     circle at 30% 80%,
     rgba(255, 255, 255, 0.18),
@@ -703,6 +709,7 @@ h3 {
     inset 0 2px 6px rgba(255, 255, 255, 0.08),
     inset 0 -8px 18px rgba(0, 0, 0, 0.35),
     0 12px 30px rgba(0, 0, 0, 0.35);
+  */
   color:white;
   cursor:pointer;
   transition:.25s;
@@ -830,4 +837,45 @@ h3 {
 /*Hover only for the icons and text*/
 .navItem:hover{
     color:white;
+}
+
+/*Activity card*/
+.activityCard{
+    background:#000000;
+    border-radius:22px;
+    padding:20px;
+    margin:24px 0;
+    border:2px solid rgba(255, 255, 255, 0.08);
+}
+.activityHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:16px;
+}
+/*Toggle/View Log Button and TEXT */
+.activityExpand{
+    border:none;
+    color:#ffffff;
+    background:#000000;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    color:white;
+    cursor:pointer;
+    font-size:14px;
+}
+#lastEntry{
+    margin-bottom:18px;
+}
+.activityActions{
+    margin-bottom:16px;
+}
+/*UNDO button in Todys activity*/
+.secondaryButton{
+    padding:10px 18px;
+    border-radius:12px;
+    border:none;
+    background:#000000;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    color:white;
+    cursor:pointer;
 }
