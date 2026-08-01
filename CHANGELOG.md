@@ -448,8 +448,17 @@ Phase 4.1 completed — Bottom Navigation Foundation
 ✅ Added glass-style navigation styling
 ✅ Kept existing Home and Food Library functionality intact
 
+## v0.3.7 Alpha - Navigation & Add Screen foundation
 
+Navigation overhaul and app structure
 
+- Added dedicated Add Food screen architecture
+- Improved bottom navigation workflow
+- Added active navigation state
+- Introduced Today's Activity card
+- Refactored screen navigation
+- Fixed multiple UI and layout issues
+- Improved dashboard structure
 
 
 

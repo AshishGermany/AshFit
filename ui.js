@@ -54,52 +54,66 @@ function updateUI() {
 }
 
 // =====================
-// AUTOCOMPLETE (FIXED)
+// AUTOCOMPLETE
 // =====================
 
-document.getElementById("input").addEventListener("input", function () {
-  const val = this.value.toLowerCase().trim();
-  const box = document.getElementById("suggestions");
-  box.innerHTML = "";
+const foodInput = document.getElementById("input");
 
-  if (!val) return;
+if (foodInput) {
+  foodInput.addEventListener("input", function () {
+    const val = this.value.toLowerCase().trim();
 
-  Object.keys(foods)
-    .filter((f) => f.includes(val))
-    .sort((a, b) => {
-      const freqA = data[today].freq?.[a] || 0;
-      const freqB = data[today].freq?.[b] || 0;
+    const box = document.getElementById("suggestions");
 
-      return freqB - freqA;
-    })
-    .slice(0, 5)
+    if (!box) return;
 
-    .forEach((food) => {
-      const div = document.createElement("div");
-      div.className = "suggestion";
-      div.innerText = food;
+    box.innerHTML = "";
 
-      div.onclick = () => {
-        document.getElementById("input").value = food;
-        addFood(food);
-        document.getElementById("suggestions").innerHTML = "";
-      };
+    if (!val) return;
 
-      box.appendChild(div);
-    });
-});
+    Object.keys(foods)
 
-// =====================
-// ENTER KEY
-// =====================
+      .filter((f) => f.includes(val))
 
-document.getElementById("input").addEventListener("keydown", function (e) {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    addFood();
-    document.getElementById("suggestions").innerHTML = "";
-  }
-});
+      .sort((a, b) => {
+        const freqA = data[today].freq?.[a] || 0;
+
+        const freqB = data[today].freq?.[b] || 0;
+
+        return freqB - freqA;
+      })
+
+      .slice(0, 5)
+
+      .forEach((food) => {
+        const div = document.createElement("div");
+
+        div.className = "suggestion";
+
+        div.innerText = food;
+
+        div.onclick = () => {
+          document.getElementById("input").value = food;
+
+          addFood(food);
+
+          box.innerHTML = "";
+        };
+
+        box.appendChild(div);
+      });
+  });
+
+  foodInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+
+      addFood();
+
+      document.getElementById("suggestions").innerHTML = "";
+    }
+  });
+}
 
 // =====================
 // FOOD LIBRARY
@@ -188,13 +202,34 @@ function showLibrary() {
   }
 }
 
-function showTracker() {
-  document.getElementById("trackerScreen").style.display = "block";
+function hideScreens() {
+  document.getElementById("trackerScreen").style.display = "none";
 
   document.getElementById("libraryScreen").style.display = "none";
 
+  document.getElementById("addScreen").style.display = "none";
+}
+
+function showTracker() {
+  hideScreens();
+
+  document.getElementById("trackerScreen").style.display = "block";
+
   setActiveTab("home");
-  refreshUI();
+}
+
+function showLibrary() {
+  hideScreens();
+
+  document.getElementById("libraryScreen").style.display = "block";
+
+  setActiveTab("foods");
+}
+
+function showFoodSearch() {
+  hideScreens();
+
+  document.getElementById("addScreen").style.display = "block";
 }
 //
 // //function renderFavorites() {
@@ -343,9 +378,11 @@ function toggleLog() {
   }
 }
 
-//FAB - + BUTTON to access Food Search
+//+ BUTTON to access Food Search
 function showFoodSearch() {
-  alert("Food Search coming soon");
+  hideScreens();
+
+  document.getElementById("addScreen").style.display = "block";
 }
 
 //BOTTOM NAV ACTIVE ICON

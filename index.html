@@ -149,38 +149,22 @@ QUICK ADD
       </div>
       <br />
 
-<div class="activityCard">
-    <div class="activityHeader">
-        <h3>Today's Activity</h3>
+      <div class="activityCard">
+        <div class="activityHeader">
+          <h3>Today's Activity</h3>
 
-        <button
-            class="activityExpand"
-            onclick="toggleLog()">
-
+          <button class="activityExpand" onclick="toggleLog()">
             View Log ▼
+          </button>
+        </div>
+        <div id="lastEntry"></div>
+        <div class="activityActions">
+          <button class="secondaryButton" onclick="undoLast()">Undo</button>
+        </div>
 
-        </button>
-
+        <div id="log" class="log" style="display: none"></div>
+      </div>
     </div>
-    <div id="lastEntry"></div>
-    <div class="activityActions">
-
-        <button
-            class="secondaryButton"
-            onclick="undoLast()">
-
-            Undo
-
-        </button>
-    </div>
-
-    <div
-        id="log"
-        class="log"
-        style="display:none">
-    </div>
-</div>
-</div>
 
     <!-- =========================
 FOOD LIBRARY SCREEN
@@ -281,7 +265,21 @@ FOOD LIBRARY SCREEN
       <div id="foodLibrary"></div>
     </div>
 
+    <!-- =========================
+ADD FOOD SCREEN
+========================= -->
 
+    <div id="addScreen" style="display: none">
+      <div class="addHeader">
+        <h2>Add Food</h2>
+      </div>
+
+      <input type="text" id="input" placeholder="Search food..." />
+
+      <div class="suggestions" id="suggestions"></div>
+
+      <button class="addFoodButton" onclick="addFood()">Add Food</button>
+    </div>
 
     <!--
     <div class="fab" onclick="showFoodSearch()">
@@ -304,8 +302,6 @@ FOOD LIBRARY SCREEN
       </button>
     </nav>
 
-
-    
     <!-- SCRIPTS -->
 
     <script src="foods.js"></script>
@@ -317,8 +313,5 @@ FOOD LIBRARY SCREEN
     <script src="nutrition.js"></script>
 
     <script src="app.js"></script>
-
-
-
   </body>
 </html>
