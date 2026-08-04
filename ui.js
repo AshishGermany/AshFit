@@ -1,5 +1,7 @@
 let activeCategory = "All";
 let foodSearchTerm = "";
+let selectedFood = null;
+let selectedQuantity = 100;
 let logExpanded = false;
 
 //GREETING FUNC
@@ -93,11 +95,21 @@ if (foodInput) {
         div.innerText = food;
 
         div.onclick = () => {
+          selectedFood = food;
+
+          if (foods[food].mode === "unit") {
+            selectedQuantity = 1;
+          } else if (foods[food].mode === "ml") {
+            selectedQuantity = 100;
+          } else {
+            selectedQuantity = 100;
+          }
+
+          renderQuantitySelector();
+
           document.getElementById("input").value = food;
 
-          addFood(food);
-
-          box.innerHTML = "";
+          renderQuantitySelector();
         };
 
         box.appendChild(div);
@@ -231,50 +243,6 @@ function showFoodSearch() {
 
   document.getElementById("addScreen").style.display = "block";
 }
-//
-// //function renderFavorites() {
-// //  const container = document.getElementById("favoritesBar");
-
-// //  container.innerHTML = "";
-
-//   Object.values(foods)
-
-//     .filter((food) => food.favourite)
-
-//     .forEach((food) => {
-//       const button = document.createElement("button");
-
-//       button.textContent = food.name;
-
-//       button.onclick = () => addFood(food.name);
-
-//       container.appendChild(button);
-//     });
-// }
-
-// function renderFrequentFoods() {
-//   const container = document.getElementById("frequentBar");
-
-//   container.innerHTML = "";
-
-//   const freq = data[today].freq || {};
-
-//   Object.entries(freq)
-
-//     .sort((a, b) => b[1] - a[1])
-
-//     .slice(0, 5)
-
-//     .forEach(([name, count]) => {
-//       const button = document.createElement("button");
-
-//       button.textContent = foods[name]?.name || name;
-
-//       button.onclick = () => addFood(name);
-
-//       container.appendChild(button);
-//     });
-// }
 
 function getFoodIcon(food) {
   if (food.type === "drink") {
@@ -439,6 +407,94 @@ function updateLastEntry() {
 
     `;
 }
+
+function renderQuantitySelector() {
+  const selector = document.getElementById("quantitySelector");
+
+  if (!selectedFood) {
+    selector.style.display = "none";
+    return;
+  }
+
+  selector.style.display = "block";
+
+  const food = foods[selectedFood];
+
+  const calories = (getCalories(food) * selectedQuantity) / 100;
+  const protein = (getProtein(food) * selectedQuantity) / 100;
+
+  document.getElementById("selectedFoodName").textContent = food.name;
+
+  document.getElementById("quantityInput").value = selectedQuantity;
+
+  updateQuantityPreview();
+}
+
+function updateQuantityPreview() {
+  if (!selectedFood) return;
+
+  const food = foods[selectedFood];
+
+  let calories;
+  let protein;
+  let unit;
+
+  if (food.mode === "unit") {
+    calories = getCalories(food) * selectedQuantity;
+    protein = getProtein(food) * selectedQuantity;
+    unit = "pieces";
+  } else if (food.mode === "ml") {
+    calories = (getCalories(food) * selectedQuantity) / 100;
+    protein = (getProtein(food) * selectedQuantity) / 100;
+    unit = "ml";
+  } else {
+    const edibleFactor = food.edibleFactor ?? 1;
+    const edibleWeight = selectedQuantity * edibleFactor;
+
+    calories = (getCalories(food) * edibleWeight) / 100;
+    protein = (getProtein(food) * edibleWeight) / 100;
+    unit = "grams";
+  }
+
+  document.getElementById("quantityUnit").textContent = unit;
+
+  document.getElementById("quantityPreview").textContent =
+    `${Math.round(calories)} kcal • ${protein.toFixed(1)} g protein`;
+}
+
+function changeQuantity(step) {
+  selectedQuantity += step;
+
+  if (selectedQuantity < 1) selectedQuantity = 1;
+
+  document.getElementById("quantityInput").value = selectedQuantity;
+
+  updateQuantityPreview();
+}
+
+function updateQuantity() {
+  const value = document.getElementById("quantityInput").value;
+
+  if (value === "") return;
+
+  selectedQuantity = Number(value);
+
+  updateQuantityPreview();
+}
+
+document.getElementById("quantityMinus").onclick = () => changeQuantity(-10);
+
+document.getElementById("quantityPlus").onclick = () => changeQuantity(10);
+
+document
+  .getElementById("quantityInput")
+  .addEventListener("input", updateQuantity);
+
+document.getElementById("confirmAddButton").onclick = () => {
+  if (!selectedFood) return;
+
+  addFood(`${selectedQuantity}g ${selectedFood}`);
+};
 
 function refreshUI() {
   updateUI();

@@ -278,7 +278,24 @@ ADD FOOD SCREEN
 
       <div class="suggestions" id="suggestions"></div>
 
-      <button class="addFoodButton" onclick="addFood()">Add Food</button>
+      <div id="quantitySelector" class="quantityCard" style="display: none">
+        <h3 id="selectedFoodName"></h3>
+
+        <div class="quantityControls">
+          <button id="quantityMinus">−</button>
+
+          <input id="quantityInput" type="number" min="1" />
+
+          <button id="quantityPlus">+</button>
+        </div>
+
+        <div id="quantityUnit"></div>
+
+        <div id="quantityPreview"></div>
+
+        <button id="confirmAddButton" class="primaryButton">Add Food</button>
+      </div>
+
     </div>
 
     <!--

@@ -59,8 +59,8 @@ function addFood(rawInput) {
 
     const f = foods[matchedFood];
 
-    const edible = f.edibleFactor ?? 1;
-    const edibleWeight = quantity * edible;
+    const edibleFactor = f.edibleFactor ?? 1;
+    const edibleWeight = quantity * edibleFactor;
 
     addToDay(
       `${quantity}g ${f.name || matchedFood}`,
@@ -127,8 +127,11 @@ function finish() {
   const suggestions = document.getElementById("suggestions");
   if (suggestions) suggestions.replaceChildren();
 
-  save();
+  selectedFood = null;
+  selectedQuantity = 100;
+  renderQuantitySelector();
 
+  save();
   refreshUI();
 }
 
